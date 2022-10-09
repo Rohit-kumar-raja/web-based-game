@@ -49,11 +49,12 @@ Route::post('contactus/update', [ContactusController::class, 'update'])->middlew
 
 // wallet start
 Route::get('wallet', [WalletController::class, 'index'])->middleware('auth')->name('wallet');
-Route::post('wallet', [WalletController::class, 'store'])->middleware('auth')->name('wallet.insert');
 Route::get('wallet/delete/{id}', [WalletController::class, 'destroy'])->middleware('auth')->name('wallet.delete');
 Route::get('wallet/status/{id}', [WalletController::class, 'status'])->middleware('auth')->name('wallet.status');
-Route::get('wallet/update/{id}', [WalletController::class, 'edit'])->middleware('auth')->name('wallet.edit');
-Route::post('wallet/update', [WalletController::class, 'update'])->middleware('auth')->name('wallet.update');
+Route::get('wallet/debit', [WalletController::class, 'debit'])->middleware('auth')->name('wallet.debit');
+Route::get('wallet/credit', [WalletController::class, 'credit'])->middleware('auth')->name('wallet.credit');
+
+
 // wallet end
 
 // match start

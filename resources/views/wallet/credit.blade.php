@@ -11,22 +11,17 @@
                                 </path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">All users</li>
+                    <li class="breadcrumb-item active" aria-current="page">Credit Transactions</li>
                 </ol>
             </nav>
-            {{-- @include('allusers.insert') --}}
 
 
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">All Users</h1>
+                    <h1 class="h4">Credit Transactions</h1>
 
                 </div>
-                {{-- <div class="col-2">
-                    <button type="button" class="btn btn-block btn-gray-800 mb-3 btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#modal-default">Add new</button>
 
-                </div> --}}
             </div>
             @if (session('store'))
                 <div class="alert alert-success">
@@ -65,12 +60,8 @@
                             <th>name </th>
                             <th>phone</th>
                             <th>email </th>
-                            <th>images</th>
-
-                            <th>Verified</th>
-                            <th>Details</th>
+                            <th>Debit</th>
                             <th>Delete</th>
-
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -79,47 +70,28 @@
                             <th>S.NO</th>
                             <th>name </th>
                             <th>email </th>
-                            <th>images</th>
                             <th>phone</th>
-
-                            <th>Verified</th>
-                            <th>Details</th>
+                            <th>Debit</th>
                             <th>Delete</th>
-
                             <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($data as $allusers)
+                        @foreach ($data as $wallet)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $allusers->name }} </td>
-                                <td> {{ $allusers->phone }} </td>
-                                <td> {{ $allusers->email }} </td>
+                                <td> {{ $wallet->name }} </td>
+                                <td> {{ $wallet->phone }} </td>
+                                <td> {{ $wallet->email }} </td>
+                                <td class="text-success" >{{ $wallet->credit }}</td>
 
-                                <td><img width="100" src="{{ $url . '/upload/allusers/' . $allusers->images }}">
-                                </td>
-                                <td>
-                                    @if ($allusers->document_verified)
-                                        <span class="btn btn-outline-success btn-sm"> <i
-                                                class="fas fa-check-circle "></i>Yes</span>
-                                    @else
-                                        <span class="btn btn-outline-danger btn-sm"> <i
-                                                class="fas fa-check-circle "></i>No</span>
-                                    @endif
-                                </td>
 
-                                @include('allusers.maasage')
-                                <td><a href="#" data-bs-toggle="modal"
-                                        data-bs-target="#modal-default{{ $allusers->id }}" class="btn btn-info btn-sm"><i
-                                            class="far fa-eye"></i></a> </td>
-
-                                <td><a href="{{ route('allusers.delete', $allusers->id) }}"
-                                        class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                <td><a href="{{ route('wallet.delete', $wallet->id) }}" class="btn btn-danger btn-sm"><i
+                                            class="fas fa-trash-alt"></i></a>
                                 </td>
-                                <td><a href="{{ route('allusers.status', $allusers->id) }}"
-                                        class="btn @if ($allusers->status == 1) btn-success @endif btn-secondary  btn-sm">
-                                        @if ($allusers->status == 1)
+                                <td><a href="{{ route('wallet.status', $wallet->id) }}"
+                                        class="btn @if ($wallet->status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($wallet->status == 1)
                                             Active
                                         @else
                                             Deactive

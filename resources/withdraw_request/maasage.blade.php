@@ -1,6 +1,6 @@
 <!-- Large modal -->
 
-<div class="modal fade" id="modal-default{{ $allusers->id }}" tabindex="-1" aria-labelledby="modal-default"
+<div class="modal fade" id="modal-default{{ $wallet->id }}" tabindex="-1" aria-labelledby="modal-default"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -10,20 +10,20 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-6 border-end"> City : {{ $allusers->city }}
+                    <div class="col-6 border-end"> City : {{ $wallet->city }}
                         <hr>
-                        State : {{ $allusers->state }}
+                        State : {{ $wallet->state }}
                         <hr>
-                        Address : {{ $allusers->address }}
+                        Address : {{ $wallet->address }}
                         <hr>
                     </div>
 
-                    <div class="col-6"> Document Type : {{ $allusers->document_type }}
+                    <div class="col-6"> Document Type : {{ $wallet->document_type }}
                         <hr>
-                        Document : {{ $allusers->document }}
+                        Document : {{ $wallet->document }}
                         <hr>
-                        Email Verified : @if ($allusers->email_verified_at)
-                            <span class="btn btn-outline-success btn-sm"> <i class="fas fa-check-circle "></i>Yes {{$allusers->email_verified_at}}</span>
+                        Email Verified : @if ($wallet->email_verified_at)
+                            <span class="btn btn-outline-success btn-sm"> <i class="fas fa-check-circle "></i>Yes {{$wallet->email_verified_at}}</span>
                         @else
                             <span class="btn btn-outline-danger btn-sm"> <i class="fas fa-check-circle "></i>No</span>
                         @endif
