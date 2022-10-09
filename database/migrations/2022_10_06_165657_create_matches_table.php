@@ -19,10 +19,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('teamone');
             $table->string('teamtwo');
+            $table->string('teamoneimg');
+            $table->string('teamtwoimg'); 
             $table->date('date');
             $table->time('time');
             $table->string('vanue');
             $table->longText('api');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

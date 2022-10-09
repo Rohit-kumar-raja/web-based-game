@@ -5,12 +5,12 @@
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i class="fas fa-home    "></i> </a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$page}}</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">About</h1>
+                    <h1 class="h4">{{$page}}</h1>
                 </div>
 
             </div>
@@ -18,7 +18,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3 row">
                     <div class="col-6">
-                        <h6 class="m-0 font-weight-bold text-primary">Update </h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Update {{ $page }} Data </h6>
                     </div>
 
                 </div>

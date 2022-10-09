@@ -26,7 +26,7 @@
                             href="{{ route('allusers') }}">
                             <i class="fas fa-users"></i> &nbsp; All Users </a>
 
-                        <a class="dropdown-item d-flex align-items-center" href="{{ route('match') }}"> <i
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('matches') }}"> <i
                                 class="fas fa-comment-alt-dots"></i> &nbsp; Matches </a>
 
                                 <a class="dropdown-item d-flex align-items-center" href="{{ route('contest') }}"> <i

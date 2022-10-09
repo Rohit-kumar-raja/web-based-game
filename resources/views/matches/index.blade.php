@@ -11,20 +11,20 @@
                                 </path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $page }}</li>
                 </ol>
             </nav>
-            @include('about.insert')
+            @include('matches.insert')
 
 
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">About</h1>
+                    <h1 class="h4">{{ $page }}</h1>
 
                 </div>
                 <div class="col-2">
                     <button type="button" class="btn btn-block btn-gray-800 mb-3 btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#modal-default">Add new</button>
+                        data-bs-target="#modal-default">Add new {{ $page }}</button>
 
                 </div>
             </div>
@@ -63,9 +63,13 @@
                         <tr>
                             <th>S.NO</th>
                             <th>name </th>
-                            <th>year </th>
-                            <th>images</th>
-                            <th>message</th>
+                            <th>teamone</th>
+                            <th>teamtwo</th>
+                            <th>teamoneimg</th>
+                            <th>teamtwoimg</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Api Details</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
                             <th>Status</th>
@@ -75,40 +79,45 @@
                         <tr>
                             <th>S.NO</th>
                             <th>name </th>
-                            <th>year </th>
-                            <th>images</th>
-                            <th>message</th>
+                            <th>teamone</th>
+                            <th>teamtwo</th>
+                            <th>teamoneimg</th>
+                            <th>teamtwoimg</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Api Details</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
                             <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($data as $about)
+                        @foreach ($data as $matches)
                             <tr>
-
-
                                 <td>{{ $loop->iteration }}</td>
 
-                                <td> {{ $about->name }} </td>
-                                <td> {{ $about->Year }} </td>
-
-
-                                <td><img width="100" src="{{ asset('upload/about/' . $about->images) }}">
+                                <td> {{ $matches->name }} </td>
+                                <td> {{ $matches->teamone }} </td>
+                                <td> {{ $matches->teamtwo }} </td>
+                                <td><img width="100" src="{{ asset('upload/matches/' . $matches->teamoneimg) }}">
                                 </td>
-
-                                @include('about.maasage')
-                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal-default{{ $about->id}}"
-                                        class="btn btn-info btn-sm"><i class="far fa-eye"></i></a> </td>
-                                <td><a href="{{ route('about.edit', $about->id) }}"
-                                        class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                                <td><img width="100" src="{{ asset('upload/matches/' . $matches->teamtwoimg) }}">
                                 </td>
-                                <td><a href="{{ route('about.delete', $about->id) }}"
-                                        class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                <td> {{ $matches->date }} </td>
+                                <td> {{ $matches->time }} </td>
+                                @include('matches.maasage')
+                                <td><a href="#" data-bs-toggle="modal"
+                                        data-bs-target="#modal-default{{ $matches->id }}" class="btn btn-info btn-sm"><i
+                                            class="far fa-eye"></i></a> </td>
+                                <td><a href="{{ route('matches.edit', $matches->id) }}" class="btn btn-warning btn-sm"><i
+                                            class="far fa-edit"></i></a>
                                 </td>
-                                <td><a href="{{ route('about.status', $about->id) }}"
-                                        class="btn @if ($about->status == 1) btn-success @endif btn-secondary  btn-sm">
-                                        @if ($about->status == 1)
+                                <td><a href="{{ route('matches.delete', $matches->id) }}" class="btn btn-danger btn-sm"><i
+                                            class="fas fa-trash-alt"></i></a>
+                                </td>
+                                <td><a href="{{ route('matches.status', $matches->id) }}"
+                                        class="btn @if ($matches->status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($matches->status == 1)
                                             Active
                                         @else
                                             Deactive
@@ -123,3 +132,4 @@
         </div>
     @endslot
 </x-layout>
+

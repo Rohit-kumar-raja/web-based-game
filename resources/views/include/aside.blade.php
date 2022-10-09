@@ -49,7 +49,7 @@
                         </svg></span></span>
                 <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('match') }}"><span
+                        <li class="nav-item"><a class="nav-link" href="{{ route('matches') }}"><span
                                     class="sidebar-text-contracted">M</span>
                                 <span class="sidebar-text">Matches</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('contest') }}"><span

@@ -4,42 +4,76 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="h6 modal-title"> Add About </h2><button type="button" class="btn-close"
+                <h2 class="h6 modal-title"> Add {{ $page }} </h2><button type="button" class="btn-close"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('about.insert') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('matches.insert') }}" method="POST" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row">
                             @csrf
                             <input type="hidden" name="created_at" value={{ date('Y-m-d') }}>
                             <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>url</b> </label>
+                                <input required onchange="fetchApi(this.value)" onclick="fetchApi(this.value)" name="url" type="text"
+                                    class="form-control" placeholder="url">
+                            </div>
+                            <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>name</b> </label>
                                 <input required name="name" type="text" class="form-control" placeholder="name">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b>year</b> </label>
-                                <input required name="Year" type="number" value="" class="form-control"
-                                    placeholder="Enter year ex -1990">
+                                <label for="" class="text-dark"> <b>team one</b> </label>
+                                <input required name="teamone" type="text" value="" class="form-control"
+                                    placeholder="teamone">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b>images</b> </label>
-                                <input accept="image/*" required name="images" type="file" class="form-control"
-                                    placeholder="images">
+                                <label for="" class="text-dark"> <b>team two</b> </label>
+                                <input required name="teamtwo" type="text" value="" class="form-control"
+                                    placeholder="teamtwo">
                             </div>
-                        
+
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>team one image </b> </label>
+                                <input accept="image/*" required name="teamoneimg" type="file" class="form-control"
+                                    placeholder="teamoneimg	">
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>team two image </b> </label>
+                                <input accept="image/*" required name="teamtwoimg" type="file" class="form-control"
+                                    placeholder="teamtwoimg	">
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>date</b> </label>
+                                <input required name="date" type="date" value="" class="form-control"
+                                    placeholder="date">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>time</b> </label>
+                                <input required name="time" type="text" value="" class="form-control"
+                                    placeholder="time">
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>vanue</b> </label>
+                                <input required name="vanue" type="text" value="" class="form-control"
+                                    placeholder="vanue">
+                            </div>
+
+
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>status</b> </label>
-                                <select required name="status" type="text" class="form-control"
-                                    placeholder="Title">
+                                <select required name="status" type="text" class="form-control" placeholder="Title">
                                     <option value="1">Active</option>
                                     <option value="0">Deactive</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-12">
-                                <label for="" class="text-dark"> <b>message</b> </label>
-                                <textarea required name="massage" type="text" class="form-control" placeholder="message"></textarea>
+                                <label for="" class="text-dark"> <b>api</b> </label>
+                                <textarea required name="api" type="text" class="form-control" placeholder="api Details"></textarea>
                             </div>
                         </div>
                     </div>
@@ -53,3 +87,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    function fetchApi(url) {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("demo").innerHTML = this.responseText;
+            console.log(this.responseText);
+        }
+        xhttp.open("GET", "https://cric-api.vercel.app/i?url="+url, true);
+        xhttp.send();
+    }
+</script>
