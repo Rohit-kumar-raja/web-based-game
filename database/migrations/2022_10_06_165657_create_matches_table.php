@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
+            $table->string('name');
+            $table->string('teamone');
+            $table->string('teamtwo');
+            $table->date('date');
+            $table->time('time');
+            $table->string('vanue');
+            $table->longText('api');
             $table->timestamps();
         });
     }

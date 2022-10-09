@@ -11,22 +11,17 @@
                                 </path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">clients</li>
+                    <li class="breadcrumb-item active" aria-current="page">Withdraw Request</li>
                 </ol>
             </nav>
-            @include('clients.insert')
 
 
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">clients</h1>
+                    <h1 class="h4">Withdraw Request</h1>
 
                 </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-block btn-gray-800 mb-3 btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#modal-default">Add new</button>
 
-                </div>
             </div>
             @if (session('store'))
                 <div class="alert alert-success">
@@ -62,13 +57,11 @@
                     <thead class="text-dark">
                         <tr>
                             <th>S.NO</th>
-                            <th>name </th>
-                            <th>design_name </th>
-                            <th>images</th>
-                           
-                            <th>message</th>
-                            <th>Action 1</th>
-                            <th>Action 2</th>
+                            <th>user name </th>
+                            <th>Amount </th>
+                            <th>payment_status</th>
+                            <th>approved_by</th>
+                            <th>Delete</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -76,41 +69,32 @@
                         <tr>
                             <th>S.NO</th>
                             <th>name </th>
-                            <th>design_name </th>
-                            <th>images</th>
-                          
-                            <th>message</th>
-                            <th>Action 1</th>
-                            <th>Action 2</th>
+                            <th>Amount </th>
+                            <th>payment_status</th>
+                            <th>approved_by</th>
+                            <th>Delete</th>
                             <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($data as $clients)
+                        @foreach ($data as $withdraw_request)
                             <tr>
-
-
                                 <td>{{ $loop->iteration }}</td>
-
-                                <td> {{ $clients->name }} </td>
-                                <td> {{ $clients->design_name }} </td>
-
-
-                                <td><img width="100" src="{{ asset('upload/clients/' . $clients->images) }}">
+                                <td class="text-info"> <a target="_blank"
+                                        href="{{ route('one.user', $withdraw_request->user->id) }}">{{ $withdraw_request->user->name }}</a>
                                 </td>
 
-                                @include('clients.maasage')
-                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal-default{{ $clients->id}}"
-                                        class="btn btn-info btn-sm"><i class="far fa-eye"></i></a> </td>
-                                <td><a href="{{ route('clients.edit', $clients->id) }}"
-                                        class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
-                                </td>
-                                <td><a href="{{ route('clients.delete', $clients->id) }}"
+
+                                <td>{{ $withdraw_request->amount }}</td>
+                                <td>{{ $withdraw_request->payment_status }}</td>
+                                <td>{{ $withdraw_request->approved_by }}</td>
+
+                                <td><a href="{{ route('withdraw_request.delete', $withdraw_request->id) }}"
                                         class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                 </td>
-                                <td><a href="{{ route('clients.status', $clients->id) }}"
-                                        class="btn @if ($clients->status == 1) btn-success @endif btn-secondary  btn-sm">
-                                        @if ($clients->status == 1)
+                                <td><a href="{{ route('withdraw_request.status', $withdraw_request->id) }}"
+                                        class="btn @if ($withdraw_request->status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($withdraw_request->status == 1)
                                             Active
                                         @else
                                             Deactive

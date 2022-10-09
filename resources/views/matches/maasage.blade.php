@@ -1,6 +1,6 @@
 <!-- Large modal -->
 
-<div class="modal fade" id="modal-default{{ $clients->id}}" tabindex="-1" aria-labelledby="modal-default" aria-hidden="true">
+<div class="modal fade" id="modal-default{{ $about->id}}" tabindex="-1" aria-labelledby="modal-default" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,7 +8,7 @@
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               {{ $clients->massage }}
+               {{ $about->massage }}
             </div>
 
         </div>

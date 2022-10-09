@@ -71,6 +71,9 @@
                         </svg></span></span>
                 <div class="multi-level collapse" role="list" id="wallet" aria-expanded="false">
                     <ul class="flex-column nav">
+                        <li class="nav-item"><a href="{{ route('withdraw.request') }}" class="nav-link"><span
+                            class="sidebar-text-contracted">A</span> <span class="sidebar-text">All
+                            Withdraw Request</span></a></li>
                         <li class="nav-item"><a href="{{ route('wallet') }}" class="nav-link"><span
                             class="sidebar-text-contracted">A</span> <span class="sidebar-text">All
                             Transaction</span></a></li>

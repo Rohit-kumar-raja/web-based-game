@@ -56,14 +56,6 @@
                                 <input name="id" type="hidden" value="{{ $data->id }}">
 
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b>About Title</b> </label>
-                                    <input required name="about_title" value="{{ $data->about_title }}" type="text" class="form-control" placeholder="About Title">
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b>About Description</b> </label>
-                                    <textarea required name="about_desc" class="form-control" cols="3" rows="3">{{ $data->about_desc }}</textarea>
-                                </div>
-                                <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>Address</b> </label>
                                     <input required name="address" value="{{ $data->address }}" type="text" class="form-control" placeholder="Address">
                                 </div>

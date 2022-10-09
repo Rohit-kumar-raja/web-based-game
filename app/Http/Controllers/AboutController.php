@@ -6,6 +6,7 @@ use App\Models\About;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class AboutController extends Controller
 {
     /**
@@ -100,13 +101,17 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        $image_name = About::find($id);
-        $image_name = $image_name->images;
         try {
-            unlink(public_path('upload/about/' . $image_name));
+            $image_name = About::find($id);
+            $image_name = $image_name->images;
+            try {
+                unlink(public_path('upload/about/' . $image_name));
+            } catch (Exception $e) {
+            }
+            About::destroy($id);
+            return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
         } catch (Exception $e) {
+            return redirect()->back()->with(['delete' => 'First you have to delete Related parent data']);
         }
-        About::destroy($id);
-        return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
 }

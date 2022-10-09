@@ -4,11 +4,11 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="h6 modal-title"> Add Client </h2><button type="button" class="btn-close"
+                <h2 class="h6 modal-title"> Add About </h2><button type="button" class="btn-close"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('clients.insert') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('about.insert') }}" method="POST" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row">
                             @csrf
@@ -18,9 +18,9 @@
                                 <input required name="name" type="text" class="form-control" placeholder="name">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b>design name</b> </label>
-                                <input required name="design_name" type="text" value="" class="form-control"
-                                    placeholder="design name">
+                                <label for="" class="text-dark"> <b>year</b> </label>
+                                <input required name="Year" type="number" value="" class="form-control"
+                                    placeholder="Enter year ex -1990">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>images</b> </label>

@@ -80,9 +80,15 @@
                         @foreach ($data as $wallet)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $wallet->name }} </td>
-                                <td> {{ $wallet->phone }} </td>
-                                <td> {{ $wallet->email }} </td>
+                                <td class="text-info"> <a target="_blank"
+                                    href="{{ route('one.user', $wallet->user->id) }}">{{ $wallet->user->name }}</a>
+                            </td>
+                            <td class="text-info"> <a target="_blank"
+                                    href="{{ route('one.user', $wallet->user->id) }}">{{ $wallet->user->phone }}</a>
+                            </td>
+                            <td class="text-info"> <a target="_blank"
+                                    href="{{ route('one.user', $wallet->user->id) }}">{{ $wallet->user->email }}</a>
+                            </td>
                                 <td class="text-danger" >{{ $wallet->debit }}</td>
 
 

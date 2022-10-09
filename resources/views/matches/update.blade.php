@@ -5,12 +5,12 @@
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i class="fas fa-home    "></i> </a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Client</li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">Client</h1>
+                    <h1 class="h4">About</h1>
                 </div>
 
             </div>
@@ -23,7 +23,7 @@
 
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('clients.update') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('about.update') }}" method="POST" enctype="multipart/form-data">
                         <div class="container">
                             <div class="row">
                                 @csrf
@@ -35,9 +35,9 @@
                                         class="form-control" placeholder="name">
                                 </div>
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b>design name</b> </label>
-                                    <input value="{{ $data->design_name }}" required name="design_name" type="text"
-                                        class="form-control" placeholder="design_name">
+                                    <label for="" class="text-dark"> <b>Year</b> </label>
+                                    <input value="{{ $data->Year}}" required name="Year" type="number"
+                                        class="form-control" placeholder="Enter Year ex - 1990">
                                 </div>
 
                                 <div class="form-group col-sm-4">
@@ -47,7 +47,7 @@
                                             <input name="images" accept="image/*" type="file" class="form-control" placeholder="images">
                                         </div>
                                         <div class="col-sm-8">
-                                            <img width="200" src="{{ asset('upload/clients/' . $data->images) }}"
+                                            <img width="200" src="{{ asset('upload/about/' . $data->images) }}"
                                                 alt="">
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-12">
-                                    <label for="" class="text-dark"> <b>message</b> </label>
+                                    <label for="" class="text-dark"> <b>maesage</b> </label>
                                     <textarea name="massage" id="massage" class="form-control" placeholder="message">{{ $data->massage }}</textarea>
 
                                 </div>

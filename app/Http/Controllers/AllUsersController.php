@@ -16,7 +16,12 @@ class AllUsersController extends Controller
     public function index()
     {
         $allusers = AllUsers::all();
-        return view('allusers.index', ['data' => $allusers,'url'=>$this->web_url()]);
+        return view('allusers.index', ['data' => $allusers, 'url' => $this->web_url()]);
+    }
+    public function oneuser($id)
+    {
+        $allusers = AllUsers::where('id', $id)->get();
+        return view('allusers.index', ['data' => $allusers, 'url' => $this->web_url()]);
     }
 
 
@@ -38,13 +43,17 @@ class AllUsersController extends Controller
 
     public function destroy($id)
     {
-        $image_name = AllUsers::find($id);
-        $image_name = $image_name->images;
         try {
-            unlink(public_path('upload/allusers/' . $image_name));
+            $image_name = AllUsers::find($id);
+            $image_name = $image_name->images;
+            try {
+                unlink(public_path('upload/allusers/' . $image_name));
+            } catch (Exception $e) {
+            }
+            AllUsers::destroy($id);
+            return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
         } catch (Exception $e) {
+            return redirect()->back()->with(['delete' => 'First you have to delete Related parent data']);
         }
-        AllUsers::destroy($id);
-        return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
 }
