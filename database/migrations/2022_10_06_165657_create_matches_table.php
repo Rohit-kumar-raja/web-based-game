@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('teamtwo');
             $table->string('teamoneimg');
             $table->string('teamtwoimg'); 
-            $table->date('date');
-            $table->time('time');
+            $table->string('date');
+            $table->string('time');
             $table->string('vanue');
             $table->longText('api');
             $table->boolean('status');

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('contest_winner_ranks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('contest_id');
+            $table->integer('from');
+            $table->integer('to');
+            $table->integer('prize_amount');
             $table->timestamps();
         });
     }

@@ -15,12 +15,12 @@
                             <input type="hidden" name="created_at" value={{ date('Y-m-d') }}>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>url</b> </label>
-                                <input required onchange="fetchApi(this.value)" onclick="fetchApi(this.value)" name="url" type="text"
-                                    class="form-control" placeholder="url">
+                                <input required onchange="fetchApi(this.value)" onclick="fetchApi(this.value)"
+                                    name="url" type="text" class="form-control" placeholder="url">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>name</b> </label>
-                                <input required name="name" type="text" class="form-control" placeholder="name">
+                                <input required  name="name" type="text" class="form-control" placeholder="name">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>team one</b> </label>
@@ -47,7 +47,7 @@
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>date</b> </label>
-                                <input required name="date" type="date" value="" class="form-control"
+                                <input required name="date" type="text" value="" class="form-control"
                                     placeholder="date">
                             </div>
                             <div class="form-group col-sm-4">
@@ -66,14 +66,14 @@
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>status</b> </label>
-                                <select required name="status" type="text" class="form-control" placeholder="Title">
+                                <select required name="status" type="text" class="form-control"
+                                    placeholder="Title">
                                     <option value="1">Active</option>
                                     <option value="0">Deactive</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-12">
-                                <label for="" class="text-dark"> <b>api</b> </label>
-                                <textarea required name="api" type="text" class="form-control" placeholder="api Details"></textarea>
+                                <textarea hidden required name="api" type="text" class="form-control" placeholder="api Details">none</textarea>
                             </div>
                         </div>
                     </div>
@@ -92,10 +92,23 @@
     function fetchApi(url) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            document.getElementById("demo").innerHTML = this.responseText;
-            console.log(this.responseText);
+            // getting the data from api
+            obj=JSON.parse(this.responseText);
+            console.log(obj);
+            document.getElementsByName('name')[0].value=obj.info.match
+            document.getElementsByName('teamone')[0].value=obj.teams.teamone
+            document.getElementsByName('teamtwo')[0].value=obj.teams.teamtwo
+            document.getElementsByName('date')[0].value=obj.info.date
+            document.getElementsByName('time')[0].value=obj.info.time
+            document.getElementsByName('vanue')[0].value=obj.info.venue
+
         }
-        xhttp.open("GET", "https://cric-api.vercel.app/i?url="+url, true);
-        xhttp.send();
+        var data = {
+            url: url,
+            _token: '7dWGsJjuB7dUGW3K8Es4vm8SFj1Gxq77Ilp9ckWH'
+        };
+        xhttp.open("POST", "{{ route('matches') }}/api", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify(data));
     }
 </script>

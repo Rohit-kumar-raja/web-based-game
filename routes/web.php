@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AllUsersController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\ContestController;
@@ -66,6 +67,8 @@ Route::get('/matches/delete/{id}', [MatchesController::class, 'destroy'])->middl
 Route::get('/matches/status/{id}', [MatchesController::class, 'status'])->middleware('auth')->name('matches.status');
 Route::get('/matches/update/{id}', [MatchesController::class, 'edit'])->middleware('auth')->name('matches.edit');
 Route::post('/matches/update', [MatchesController::class, 'update'])->middleware('auth')->name('matches.update');
+Route::post('/matches/api/', [MatchesController::class, 'fetch_api'])->middleware('auth')->name('matches.fatch.api');
+
 // match end
 
 // contest start
@@ -83,6 +86,16 @@ Route::get('/withdraw/delete/{id}', [WithdrawRequestController::class, 'destroy'
 Route::get('/withdraw/status/{id}', [WithdrawRequestController::class, 'status'])->middleware('auth')->name('withdraw_request.status');
 
 // withdraw request end
+
+
+Route::get('/matches', [ProductController::class, 'index'])->middleware('auth')->name('matches');
+Route::post('/matches', [ProductController::class, 'store'])->middleware('auth')->name('matches.insert');
+Route::get('/matches/delete/{id}', [ProductController::class, 'destroy'])->middleware('auth')->name('matches.delete');
+Route::get('/matches/status/{id}', [ProductController::class, 'status'])->middleware('auth')->name('matches.status');
+Route::get('/matches/update/{id}', [ProductController::class, 'edit'])->middleware('auth')->name('matches.edit');
+Route::post('/matches/update', [ProductController::class, 'update'])->middleware('auth')->name('matches.update');
+Route::get('/matches/insert', [ProductController::class, 'insert'])->middleware('auth')->name('matches.insert.view');
+Route::get('/matches/image/delte/{id}', [ProductController::class, 'imageDelete'])->middleware('auth')->name('matches.image.delete');
 
 
 

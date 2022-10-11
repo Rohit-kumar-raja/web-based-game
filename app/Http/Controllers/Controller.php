@@ -30,9 +30,11 @@ class Controller extends BaseController
         $image_name = DB::table($table_name)->find($id);
         if ($image_name->$column_name == '') {
             $image_name = date('YmdHis')  . $image->getClientOriginalName();
-            DB::table($table_name)->where('id', $id)->update([$column_name => $image_name]);
+        }else{
+            $image_name = $image_name->$column_name;
         }
-        $image_name = $image_name->$column_name;
+        DB::table($table_name)->where('id', $id)->update([$column_name => $image_name]);
+
         $image->move($destinationPath, $image_name);
     }
 

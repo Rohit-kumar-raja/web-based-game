@@ -74,7 +74,7 @@ class MatchesController extends Controller
     public function edit($id)
     {
         $data = Matches::find($id);
-        return view('Matches.update', ["data" => $data,]);
+        return view('matches.update', ["data" => $data, 'page' => $this->page_name]);
     }
 
     /**
@@ -87,11 +87,15 @@ class MatchesController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        Matches::where('id', $id)->update($request->except("_token", 'images'));
-        if ($request->file('images')) {
-            $this->update_images('Matchess', $id, $request->file('images'), 'Matches', 'images');
+        Matches::where('id', $id)->update($request->except("_token", 'teamoneimg','teamtwoimg'));
+        if ($request->file('teamoneimg')) {
+            $this->update_images('matches', $id, $request->file('teamoneimg'), 'matches', 'teamoneimg');
         }
-        return redirect('Matches')->with(['update' => "Data successfully Updated"]);
+        if ($request->file('teamtwoimg')) {
+            $this->update_images('matches', $id, $request->file('teamtwoimg'), 'matches', 'teamtwoimg');
+        }
+
+        return redirect()->route('matches')->with(['update' => "Data successfully Updated"]);
     }
 
     /**
@@ -114,5 +118,13 @@ class MatchesController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with(['delete' => 'First you have to delete Related parent data']);
         }
+    }
+
+    public function fetch_api(Request $request)
+    {
+        $url = $request->url;
+        $string = file_get_contents("https://cric-api.vercel.app/i?url=" . $url);
+        $data = json_decode($string);
+        return response()->json($data);
     }
 }
