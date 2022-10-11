@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('contests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mathche_id');
+            $table->unsignedBigInteger('matches_id');
             $table->double('total_price');
             $table->string('no_of_participate');
             $table->integer('no_of_winnners');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('participate_amount');
             $table->integer('no_scratch_card_in_one');
             $table->boolean('status');
+            $table->foreign('matches_id')->references('id')->on('matches');
             $table->timestamps();
         });
     }

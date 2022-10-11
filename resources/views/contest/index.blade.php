@@ -11,19 +11,19 @@
                                 </path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">services</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$page}}</li>
                 </ol>
             </nav>
 
 
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">services</h1>
+                    <h1 class="h4">{{$page}}</h1>
 
                 </div>
                 <div class="col-2">
                     <a href="{{ route('matches.insert.view') }}" class="btn btn-block btn-gray-800 mb-3 btn-sm">Add
-                        new</a>
+                        new {{$page}} </a>
 
                 </div>
             </div>
@@ -85,28 +85,28 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($data as $services)
+                        @foreach ($data as $matches)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
 
-                                <td> {{ $services->category }} </td>
-                                <td> {{ $services->log_title }} </td>
-                                <td> {{ $services->youtube }} </td>
-                                <td> {{ $services->view360 }} </td>
+                                <td> {{ $matches->category }} </td>
+                                <td> {{ $matches->log_title }} </td>
+                                <td> {{ $matches->youtube }} </td>
+                                <td> {{ $matches->view360 }} </td>
 
 
                                 @include('matches.maasage')
-                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal-default{{ $services->id}}"
+                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal-default{{ $matches->id}}"
                                         class="btn btn-info btn-sm"><i class="far fa-eye"></i></a> </td>
-                                <td><a href="{{ route('matches.edit', $services->id) }}"
+                                <td><a href="{{ route('matches.edit', $matches->id) }}"
                                         class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
                                 </td>
-                                <td><a href="{{ route('matches.delete', $services->id) }}"
+                                <td><a href="{{ route('matches.delete', $matches->id) }}"
                                         class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                 </td>
-                                <td><a href="{{ route('matches.status', $services->id) }}"
-                                        class="btn @if ($services->status == 1) btn-success @endif btn-secondary  btn-sm">
-                                        @if ($services->status == 1)
+                                <td><a href="{{ route('matches.status', $matches->id) }}"
+                                        class="btn @if ($matches->status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($matches->status == 1)
                                             Active
                                         @else
                                             Deactive

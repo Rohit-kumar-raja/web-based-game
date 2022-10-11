@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('from');
             $table->integer('to');
             $table->integer('prize_amount');
+            $table->foreign('contest_id')->references('id')->on('contests');
             $table->timestamps();
         });
     }

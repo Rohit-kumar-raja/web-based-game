@@ -3,9 +3,9 @@
     @slot('body')
         <div class="modal-content mt-5 ">
             <div class="modal-header">
-                <h2 class="h6 modal-title"> Add matches <a class="btn btn-sm btn-secondary"
+                <h2 class="h6 modal-title"> Add {{$page}} <a class="btn btn-sm btn-secondary"
                         href="{{ route('matches') }}"> <i class="fa fa-arrow-left" aria-hidden="true"></i> All
-                        matches</a> </h2>
+                        {{$page}}</a> </h2>
             </div>
             @if (session('store'))
                 <div class="alert alert-success">
@@ -40,9 +40,9 @@
                             <input type="hidden" name="created_at" value={{ date('Y-m-d') }}>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>type</b> </label>
-                                <select required name="category" class="form-control">
+                                <select required name="matches" class="form-control">
                                     <option selected disabled> - Select - </option>
-                                    @foreach ($category as $data)
+                                    @foreach ($matches as $data)
                                         <option value="{{ $data->id }}">{{ $data->name }}</option>
                                     @endforeach
                                 </select>
@@ -120,17 +120,6 @@
                             </table>
 
 
-                            <div class="row">
-                                <div class="col-sm-3 imgUp mt-5">
-                                    <div class="imagePreview"></div>
-                                    <label class="btn btn-primary">
-                                        Upload<input type="file" accept="image/*" name="img[]"
-                                            class="uploadFile img" value="Upload Photo"
-                                            style="width: 0px;height: 0px;overflow: hidden;">
-                                    </label>
-                                </div><!-- col-2 -->
-                                <i class="fa fa-plus imgAdd mt-5"></i>
-                            </div>
 
                         </div>
                     </div>
@@ -152,39 +141,7 @@
     }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(".imgAdd").click(function() {
-        $(this).closest(".row").find('.imgAdd').before(
-            '<div class="col-sm-3 imgUp mt-5"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" accept="image/*" name="img[]" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fas fa-times del"></i></div>'
-        );
-    });
-    $(document).on("click", "i.del", function() {
-        // 	to remove card
-        $(this).parent().remove();
-        // to clear image
-        // $(this).parent().find('.imagePreview').css("background-image","url('')");
-    });
-    $(function() {
-        $(document).on("change", ".uploadFile", function() {
-            var uploadFile = $(this);
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader)
-                return; // no file selected, or no FileReader support
 
-            if (/^image/.test(files[0].type)) { // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
-
-                reader.onloadend = function() { // set image data as background of div
-                    //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image",
-                        "url(" + this.result + ")");
-                }
-            }
-
-        });
-    });
-</script>
 
 
 <script type="text/javascript">

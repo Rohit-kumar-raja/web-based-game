@@ -87,16 +87,13 @@ Route::get('/withdraw/status/{id}', [WithdrawRequestController::class, 'status']
 
 // withdraw request end
 
-
-Route::get('/matches', [ProductController::class, 'index'])->middleware('auth')->name('matches');
-Route::post('/matches', [ProductController::class, 'store'])->middleware('auth')->name('matches.insert');
-Route::get('/matches/delete/{id}', [ProductController::class, 'destroy'])->middleware('auth')->name('matches.delete');
-Route::get('/matches/status/{id}', [ProductController::class, 'status'])->middleware('auth')->name('matches.status');
-Route::get('/matches/update/{id}', [ProductController::class, 'edit'])->middleware('auth')->name('matches.edit');
-Route::post('/matches/update', [ProductController::class, 'update'])->middleware('auth')->name('matches.update');
-Route::get('/matches/insert', [ProductController::class, 'insert'])->middleware('auth')->name('matches.insert.view');
-Route::get('/matches/image/delte/{id}', [ProductController::class, 'imageDelete'])->middleware('auth')->name('matches.image.delete');
-
-
+Route::get('/matches', [ContestController::class, 'index'])->middleware('auth')->name('matches');
+Route::post('/matches', [ContestController::class, 'store'])->middleware('auth')->name('matches.insert');
+Route::get('/matches/delete/{id}', [ContestController::class, 'destroy'])->middleware('auth')->name('matches.delete');
+Route::get('/matches/status/{id}', [ContestController::class, 'status'])->middleware('auth')->name('matches.status');
+Route::get('/matches/update/{id}', [ContestController::class, 'edit'])->middleware('auth')->name('matches.edit');
+Route::post('/matches/update', [ContestController::class, 'update'])->middleware('auth')->name('matches.update');
+Route::get('/matches/insert', [ContestController::class, 'insert'])->middleware('auth')->name('matches.insert.view');
+Route::get('/matches/image/delte/{id}', [ContestController::class, 'imageDelete'])->middleware('auth')->name('matches.image.delete');
 
 require __DIR__ . '/auth.php';
