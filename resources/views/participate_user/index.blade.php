@@ -11,22 +11,17 @@
                                 </path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">ProductCategory</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $page }}</li>
                 </ol>
             </nav>
-            @include('products.category.insert')
 
 
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">ProductCategory</h1>
+                    <h1 class="h4">{{ $page }}</h1>
 
                 </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-block btn-gray-800 mb-3 btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#modal-default">Add new</button>
 
-                </div>
             </div>
             @if (session('store'))
                 <div class="alert alert-success">
@@ -62,47 +57,59 @@
                     <thead class="text-dark">
                         <tr>
                             <th>S.NO</th>
-                            <th>name </th>
-            
-                            <th>images</th>
-                            <th>Description</th>
-                            <th>Action 1</th>
-                            <th>Action 2</th>
+                            <th>user name </th>
+                            <th>Contest </th>
+                            <th>Matche</th>
+                            <th>Wallet</th>
+                            <th>Amount </th>
+                            <th>Player</th>
+                            <th>Sctrach</th>
+                            {{-- <th>Delete</th> --}}
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tfoot class="text-dark">
                         <tr>
                             <th>S.NO</th>
-                            <th>name </th>
-      
-                            <th>images</th>
-                            <th>Description</th>
-                            <th>Action 1</th>
-                            <th>Action 2</th>
+                            <th>user name </th>
+                            <th>Contest </th>
+                            <th>Matche</th>
+                            <th>Wallet</th>
+                            <th>Amount </th>
+                            <th>Player</th>
+                            <th>Sctrach</th>
+                            {{-- <th>Delete</th> --}}
                             <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($data as $ProductCategory)
+                        @foreach ($data as $participated_user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $ProductCategory->name }} </td>
-                                <td><img width="100" src="{{ asset('upload/productcategory/' . $ProductCategory->images) }}">
+                                <td class="text-info"> <a target="_blank"
+                                        href="{{ route('one.user', $participated_user->user->id) }}">{{ $participated_user->user->user_name }}</a>
                                 </td>
-             
-                                @include('products.category.maasage')
-                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal-default{{$ProductCategory->id}}"
-                                        class="btn btn-info btn-sm"><i class="far fa-eye"></i></a> </td>
-                                <td><a href="{{ route('products.category.edit', $ProductCategory->id) }}"
-                                        class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                                <td class="text-info"> <a target="_blank"
+                                        href="{{ route('one.contest', $participated_user->contest->id) }}">{{ $participated_user->contest->name }}</a>
                                 </td>
-                                <td><a href="{{ route('products.category.delete', $ProductCategory->id) }}"
+                                <td class="text-info"> <a target="_blank"
+                                        href="{{ route('one.match', $participated_user->matche->id) }}">{{ $participated_user->matche->name }}</a>
+                                </td>
+                                <td class="text-info"> <a target="_blank"
+                                        href="{{ route('one.wallet', $participated_user->wallet_id) }}">{{ $participated_user->wallet->debit>0?$participated_user->wallet->debit:$participated_user->wallet->credit }}</a>
+                                </td>
+
+
+                                <td>{{ $participated_user->participate_amount }}</td>
+                                <td>{{ $participated_user->player }}</td>
+                                <td>{{ $participated_user->scratch }}</td>
+
+                                {{-- <td><a href="{{ route('participated_user.delete', $participated_user->id) }}"
                                         class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                                <td><a href="{{ route('products.category.status', $ProductCategory->id) }}"
-                                        class="btn @if ($ProductCategory->status == 1) btn-success @endif btn-secondary  btn-sm">
-                                        @if ($ProductCategory->status == 1)
+                                </td> --}}
+                                <td><a href="{{ route('participated_user.status', $participated_user->id) }}"
+                                        class="btn @if ($participated_user->status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($participated_user->status == 1)
                                             Active
                                         @else
                                             Deactive

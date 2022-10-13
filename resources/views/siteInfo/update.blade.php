@@ -1,16 +1,17 @@
 <x-layout>
+
     @slot('body')
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i class="fas fa-home    "></i> </a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Site Info</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $page }}</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">Site Info</h1>
+                    <h1 class="h4">{{ $page }}</h1>
                 </div>
 
             </div>
@@ -55,7 +56,7 @@
                                 @csrf
                                 <input name="id" type="hidden" value="{{ $data->id }}">
 
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-12>
                                     <label for="" class="text-dark"> <b>Address</b> </label>
                                     <input required name="address" value="{{ $data->address }}" type="text" class="form-control" placeholder="Address">
                                 </div>

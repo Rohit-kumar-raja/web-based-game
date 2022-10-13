@@ -7,19 +7,20 @@ use App\Models\ContestWinnerRank;
 use App\Models\Matches;
 use Illuminate\Http\Request;
 use Exception;
+
 class ContestController extends Controller
 {
-  public  $page_name='Contest';
+    public  $page_name = 'Contest';
     public function index()
     {
         $Products = Contest::all();
-        return view('contest.index', ['data' => $Products,'page'=>$this->page_name]);
+        return view('contest.index', ['data' => $Products, 'page' => $this->page_name]);
     }
 
     public  function insert()
     {
-        $matches = Contest::all();
-        return view('contest.insert', ['matches' => $matches,'page'=>$this->page_name]);
+        $matches = Matches::all();
+        return view('contest.insert', ['matches' => $matches, 'page' => $this->page_name]);
     }
 
     /**
@@ -41,16 +42,16 @@ class ContestController extends Controller
     public function store(Request $request)
     {
 
+        $id =   Contest::insertGetId($request->except('_token', 'from', 'to', 'prize_amount'));
 
-        $id =   Contest::insertGetId($request->except('_token', 'img', 'title', 'description'));
-     
 
-        for ($i = 0; $i < count($request->title); $i++) {
+        for ($i = 0; $i < count($request->from); $i++) {
             ContestWinnerRank::insert([
-                'title' => $request->title[$i],
-                'description' => $request->description[$i],
-                'product_id' => $id,
-                'created_at'=>date('Y-m-d h:m:s')
+                'from' => $request->from[$i],
+                'to' => $request->to[$i],
+                'prize_amount' => $request->prize_amount[$i],
+                'contest_id' => $id,
+                'created_at' => date('Y-m-d h:m:s')
             ]);
         }
 
@@ -85,8 +86,9 @@ class ContestController extends Controller
     public function edit($id)
     {
         $data = Contest::find($id);
-       $matches=Matches::all();
-        return view('contest.update', ["data" => $data, 'matches' => $matches,'page'=>$this->page_name]);
+        $matches = Matches::all();
+        $rank = ContestWinnerRank::where('contest_id', $id)->get();
+        return view('contest.update', ["data" => $data, 'matches' => $matches, 'rank' => $rank, 'page' => $this->page_name]);
     }
 
     /**
@@ -99,16 +101,19 @@ class ContestController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        Contest::where('id', $id)->update($request->except("_token", 'img', 'title', 'description'));
-    
+        Contest::where('id', $id)->update($request->except('_token', 'from', 'to', 'prize_amount'));
+        ContestWinnerRank::where('contest_id', $id)->delete();
 
-        for ($i = 0; $i < count($request->title); $i++) {
-            ContestWinnerRank::insert([
-                'title' => $request->title[$i],
-                'description' => $request->description[$i],
-                'product_id' => $id,
-                'created_at'=>date('Y-m-d h:m:s')
-            ]);
+        for ($i = 0; $i < count($request->from); $i++) {
+            if ($request->from[$i] != '' && $request->to[$i] != '') {
+                ContestWinnerRank::insert([
+                    'from' => $request->from[$i],
+                    'to' => $request->to[$i],
+                    'prize_amount' => $request->prize_amount[$i],
+                    'contest_id' => $id,
+                    'created_at' => date('Y-m-d h:m:s')
+                ]);
+            }
         }
 
 
@@ -132,6 +137,4 @@ class ContestController extends Controller
         Contest::destroy($id);
         return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
-
-   
 }

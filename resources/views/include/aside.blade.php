@@ -72,11 +72,11 @@
                 <div class="multi-level collapse" role="list" id="wallet" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item"><a href="{{ route('withdraw.request') }}" class="nav-link"><span
-                            class="sidebar-text-contracted">A</span> <span class="sidebar-text">All
-                            Withdraw Request</span></a></li>
+                                    class="sidebar-text-contracted">A</span> <span class="sidebar-text">All
+                                    Withdraw Request</span></a></li>
                         <li class="nav-item"><a href="{{ route('wallet') }}" class="nav-link"><span
-                            class="sidebar-text-contracted">A</span> <span class="sidebar-text">All
-                            Transaction</span></a></li>
+                                    class="sidebar-text-contracted">A</span> <span class="sidebar-text">All
+                                    Transaction</span></a></li>
 
                         <li class="nav-item"><a class="nav-link" href="{{ route('wallet.debit') }}"><span
                                     class="sidebar-text-contracted">C</span> <span class="sidebar-text">All
@@ -89,12 +89,11 @@
             </li>
 
 
-
-
-
-
             <li class="nav-item"><a href="{{ route('allusers') }}" class="nav-link"><span class="sidebar-icon"><i
                             class="far fa-users"></i> </span><span class="sidebar-text">Users List</span></a>
+            </li>
+            <li class="nav-item"><a href="{{ route('participate.user') }}" class="nav-link"><span class="sidebar-icon"><i
+                            class="far fa-users"></i> </span><span class="sidebar-text">Participated Users List</span></a>
             </li>
 
             <li class="nav-item"><a href="siteinfo" class="nav-link"><span class="sidebar-icon"><i

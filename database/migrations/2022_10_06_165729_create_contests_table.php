@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('contests', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('matches_id');
             $table->double('total_price');
             $table->string('no_of_participate');

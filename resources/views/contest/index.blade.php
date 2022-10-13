@@ -11,19 +11,19 @@
                                 </path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">{{ env('APP_NAME') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{$page}}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $page }}</li>
                 </ol>
             </nav>
 
 
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
-                    <h1 class="h4">{{$page}}</h1>
+                    <h1 class="h4">{{ $page }}</h1>
 
                 </div>
                 <div class="col-2">
-                    <a href="{{ route('matches.insert.view') }}" class="btn btn-block btn-gray-800 mb-3 btn-sm">Add
-                        new {{$page}} </a>
+                    <a href="{{ route('contest.insert.view') }}" class="btn btn-block btn-gray-800 mb-3 btn-sm">Add
+                        new {{ $page }} </a>
 
                 </div>
             </div>
@@ -61,11 +61,14 @@
                     <thead class="text-dark">
                         <tr>
                             <th>S.NO</th>
-                            <th>category </th>
-                            <th>Title </th>
-                            <th>youtube</th>
-                            <th>view360</th>
-                            <th>Description</th>
+                            <th>Name</th>
+                            <th>matche_name </th>
+                            <th>total_price </th>
+                            <th>no_of_participate</th>
+                            <th>no_of_winnners</th>
+                            <th>percentage_of_winners</th>
+                            <th>participate_amount</th>
+                            <th>no_scratch_card_in_one</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
                             <th>Status</th>
@@ -74,39 +77,45 @@
                     <tfoot class="text-dark">
                         <tr>
                             <th>S.NO</th>
-                            <th>category </th>
-                            <th>Title </th>
-                            <th>youtube</th>
-                            <th>view360</th>
-                            <th>Description</th>
+                            <th>Name</th>
+                            <th>matche_name </th>
+                            <th>total_price </th>
+                            <th>no_of_participate</th>
+                            <th>no_of_winnners</th>
+                            <th>percentage_of_winners</th>
+                            <th>participate_amount</th>
+                            <th>no_scratch_card_in_one</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
                             <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($data as $matches)
+                        @foreach ($data as $contest)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
 
-                                <td> {{ $matches->category }} </td>
-                                <td> {{ $matches->log_title }} </td>
-                                <td> {{ $matches->youtube }} </td>
-                                <td> {{ $matches->view360 }} </td>
+                                <td> {{ $contest->name }} </td>
+                                <td> {{ $contest->matches->name }} </td>
+                                <td> {{ $contest->no_of_participate }} </td>
+                                <td> {{ $contest->no_of_winnners }} </td>
+                                <td> {{ $contest->percentage_of_winners }} </td>
+                                <td> {{ $contest->participate_amount }} </td>
+                                <td> {{ $contest->no_scratch_card_in_one }} </td>
+                              
 
-
-                                @include('matches.maasage')
-                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal-default{{ $matches->id}}"
-                                        class="btn btn-info btn-sm"><i class="far fa-eye"></i></a> </td>
-                                <td><a href="{{ route('matches.edit', $matches->id) }}"
-                                        class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                                <td><a href="#" data-bs-toggle="modal"
+                                        data-bs-target="#modal-default{{ $contest->id }}" class="btn btn-info btn-sm"><i
+                                            class="far fa-eye"></i></a> </td>
+                                <td><a href="{{ route('contest.edit', $contest->id) }}" class="btn btn-warning btn-sm"><i
+                                            class="far fa-edit"></i></a>
                                 </td>
-                                <td><a href="{{ route('matches.delete', $matches->id) }}"
-                                        class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                <td><a href="{{ route('contest.delete', $contest->id) }}" class="btn btn-danger btn-sm"><i
+                                            class="fas fa-trash-alt"></i></a>
                                 </td>
-                                <td><a href="{{ route('matches.status', $matches->id) }}"
-                                        class="btn @if ($matches->status == 1) btn-success @endif btn-secondary  btn-sm">
-                                        @if ($matches->status == 1)
+                                <td><a href="{{ route('contest.status', $contest->id) }}"
+                                        class="btn @if ($contest->status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($contest->status == 1)
                                             Active
                                         @else
                                             Deactive

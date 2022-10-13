@@ -15,6 +15,19 @@ return new class extends Migration
     {
         Schema::create('participated_users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('matche_id');
+            $table->unsignedBigInteger('contest_id');
+            $table->unsignedBigInteger('wallet_id');
+            $table->string('player');
+            $table->string('scratch');
+            $table->integer('participate_amount');
+            $table->boolean('status');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('matche_id')->references('id')->on('matches');
+            $table->foreign('contest_id')->references('id')->on('contests');
+            $table->foreign('wallet_id')->references('id')->on('wallets');
+
             $table->timestamps();
         });
     }

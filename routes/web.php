@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MatchesController;
+use App\Http\Controllers\ParticipatedUserController;
 use App\Http\Controllers\SiteInfoController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawRequestController;
@@ -78,6 +79,8 @@ Route::get('/contest/delete/{id}', [ContestController::class, 'destroy'])->middl
 Route::get('/contest/status/{id}', [ContestController::class, 'status'])->middleware('auth')->name('contest.status');
 Route::get('/contest/update/{id}', [ContestController::class, 'edit'])->middleware('auth')->name('contest.edit');
 Route::post('/contest/update', [ContestController::class, 'update'])->middleware('auth')->name('contest.update');
+Route::get('/contest/insert', [ContestController::class, 'insert'])->middleware('auth')->name('contest.insert.view');
+
 // contest end
 
 // withdraw request start
@@ -87,13 +90,13 @@ Route::get('/withdraw/status/{id}', [WithdrawRequestController::class, 'status']
 
 // withdraw request end
 
-Route::get('/matches', [ContestController::class, 'index'])->middleware('auth')->name('matches');
-Route::post('/matches', [ContestController::class, 'store'])->middleware('auth')->name('matches.insert');
-Route::get('/matches/delete/{id}', [ContestController::class, 'destroy'])->middleware('auth')->name('matches.delete');
-Route::get('/matches/status/{id}', [ContestController::class, 'status'])->middleware('auth')->name('matches.status');
-Route::get('/matches/update/{id}', [ContestController::class, 'edit'])->middleware('auth')->name('matches.edit');
-Route::post('/matches/update', [ContestController::class, 'update'])->middleware('auth')->name('matches.update');
-Route::get('/matches/insert', [ContestController::class, 'insert'])->middleware('auth')->name('matches.insert.view');
-Route::get('/matches/image/delte/{id}', [ContestController::class, 'imageDelete'])->middleware('auth')->name('matches.image.delete');
+Route::get('/participate/user', [ParticipatedUserController::class, 'index'])->middleware('auth')->name('participate.user');
+Route::get('/participate/user/delete/{id}', [ParticipatedUserController::class, 'destroy'])->middleware('auth')->name('participated_user.delete');
+Route::get('/participate/user/status/{id}', [ParticipatedUserController::class, 'status'])->middleware('auth')->name('participated_user.status');
+
+Route::get('/onematch/{id}', [ParticipatedUserController::class, 'onematch'])->middleware('auth')->name('one.match');
+Route::get('/onecontest/{id}', [ParticipatedUserController::class, 'onecontest'])->middleware('auth')->name('one.contest');
+Route::get('/onewallet/{id}', [ParticipatedUserController::class, 'onewallet'])->middleware('auth')->name('one.wallet');
+
 
 require __DIR__ . '/auth.php';

@@ -2,10 +2,16 @@
 <x-layout>
     @slot('body')
         <div class="modal-content mt-5 ">
-            <div class="modal-header">
-                <h2 class="h6 modal-title"> Add {{$page}} <a class="btn btn-sm btn-secondary"
-                        href="{{ route('matches') }}"> <i class="fa fa-arrow-left" aria-hidden="true"></i> All
-                        {{$page}}</a> </h2>
+
+            <div class="row p-3">
+                <div class="col-10">
+                    <h2 class="h6 modal-title"> Add {{ $page }} </h2>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-sm btn-secondary" href="{{ route('matches') }}"> <i class="fa fa-arrow-left"
+                            aria-hidden="true"></i> All
+                        {{ $page }}</a>
+                </div>
             </div>
             @if (session('store'))
                 <div class="alert alert-success">
@@ -40,7 +46,7 @@
                             <input type="hidden" name="created_at" value={{ date('Y-m-d') }}>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>type</b> </label>
-                                <select required name="matches" class="form-control">
+                                <select required name="matches_id" class="form-control">
                                     <option selected disabled> - Select - </option>
                                     @foreach ($matches as $data)
                                         <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -48,35 +54,49 @@
                                 </select>
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b>Full Title</b> </label>
-                                <input required onkeyup="url_data(this.value)" name="log_title" type="text"
+                                <label for="" class="text-dark"> <b>name</b> </label>
+                                <input required onkeyup="url_data(this.value)" name="name" type="text"
                                     class="form-control" placeholder="name">
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> url </b> </label>
-                                <input required id="url" name="slug" type="text" class="form-control"
-                                    placeholder="url">
+                                <label for="" class="text-dark"> <b> total_price </b> </label>
+                                <input required id="url" name="total_price" type="number" class="form-control"
+                                    placeholder="total_price">
                             </div>
-
-
-                            <div class="form-group col-sm-12">
-                                <label for="" class="text-dark"> <b> Log Description </b> </label>
-                                <textarea required name="log_description" type="text" class="form-control" placeholder="message"></textarea>
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b> no_of_participate </b> </label>
+                                <input name="no_of_participate" type="number" class="form-control"
+                                    placeholder="No Of Participate">
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b><i class="fab fa-youtube"></i> Youtube
-                                        Link</b> </label>
-                                <input name="youtube" type="text" class="form-control" placeholder="Youtube Link">
+                                <label for="" class="text-dark"> <b>
+                                        participate_amount </b> </label>
+                                <input name="participate_amount" type="number" class="form-control"
+                                    placeholder="participate_amount">
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> <i class="fa-thin fa-360-degrees"></i> 360
-                                        view Image Link</b> </label>
-                                <input name="view360" type="text" class="form-control"
-                                    placeholder=" 360 view image link ">
+                                <label for="" class="text-dark"> <b> 
+                                        no_of_winnners </b> </label>
+                                <input name="no_of_winnners" type="number" class="form-control"
+                                    placeholder=" no_of_winnners ">
                             </div>
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b> 
+                                        percentage_of_winners </b> </label>
+                                <input name="percentage_of_winners" type="text" class="form-control"
+                                    placeholder=" percentage_of_winners ">
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b> 
+                                        no_scratch_card_in_one </b> </label>
+                                <input name="no_scratch_card_in_one" type="number" class="form-control"
+                                    placeholder=" no_scratch_card_in_one ">
+                            </div>
+
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>status</b> </label>
@@ -91,8 +111,9 @@
                                 <thead>
                                     <tr>
                                         <th> Item No.</th>
-                                        <th> Title </th>
-                                        <th> Description</th>
+                                        <th> from </th>
+                                        <th> to</th>
+                                        <th> prize_amount</th>
                                         <th> Add</th>
                                     </tr>
                                 </thead>
@@ -101,44 +122,44 @@
                                         <td width="2%"><input type="text" id="slno1" value="1" readonly
                                                 class="form-control form-control-sm" style="border:none;" /></td>
                                         <td>
-                                            <input class="form-control form-control-sm title" type="text" size="7"
-                                                name="title[]" id="title[]" />
+                                            <input class="form-control form-control-sm from" type='number'
+                                                size="7" name="from[]" id="from[]" />
                                         </td>
-
                                         <td>
-                                            <input class="form-control form-control-sm product" id="description"
-                                                name="description[]">
+                                            <input class="form-control form-control-sm to" id="to" type='number'
+                                                name="to[]">
 
                                         </td>
+                                        <td>
+                                            <input class="form-control form-control-sm to" id="prize_amount"
+                                                type='number' name="prize_amount[]">
 
+                                        </td>
                                         <td><button type="button" name="add" id="add"
                                                 class="btn btn-success btn-sm"><i class="fa fa-plus"
                                                     aria-hidden="true"></i></button></td>
-
                                     </tr>
                                 </tbody>
                             </table>
-
-
-
                         </div>
                     </div>
-                    <hr>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                </form>
             </div>
+
+            </form>
+        </div>
 
         </div>
     @endslot
 </x-layout>
 
 <script>
-    function url_data(data) {
-        document.getElementById('url').value = data.replaceAll(' ', '+')
+    // function url_data(data) {
+    //     document.getElementById('url').value = data.replaceAll(' ', '+')
 
-    }
+    // }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -153,7 +174,7 @@
             i++;
             $('#dynamic_field').append('<tr id="row' + i +
                 '" class="dynamic-added  " ><td><input type="text" id="slno' + i + '" value="' + i +
-                '" readonly class="form-control form-control-sm" style="border:none;" /></td> <td> <input class="form-control form-control-sm qty" type="text" size="7" name="title[]"  /> </td><td>   <input class="form-control form-control-sm product" name="description[]" /> </td> <td><button type="button" name="remove" id="' +
+                '" readonly class="form-control form-control-sm" style="border:none;" /></td> <td> <input class="form-control form-control-sm from" type="number" size="7" name="from[]"  /> </td><td>   <input class="form-control form-control-sm to" type="number"  name="to[]" /> </td>    <td> <input class="form-control form-control-sm to" type="number"  id="prize_amount"  name="prize_amount[]"> </td> <td><button type="button" name="remove" id="' +
                 i + '" class="btn btn-danger btn_remove btn-sm">X</button></td></tr>');
         });
         $(document).on('click', '.btn_remove', function() {
@@ -165,57 +186,3 @@
 
     });
 </script>
-
-<style>
-    body {
-        background-color: #f5f5f5;
-    }
-
-    .imagePreview {
-        width: 100%;
-        height: 180px;
-        background-position: center center;
-        background: url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
-        background-color: #fff;
-        background-size: cover;
-        background-repeat: no-repeat;
-        display: inline-block;
-        box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-primary {
-        display: block;
-        border-radius: 0px;
-        box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
-        margin-top: -5px;
-    }
-
-    .imgUp {
-        margin-bottom: 15px;
-    }
-
-    .del {
-        position: relative;
-        top: -231px;
-        padding-left: 5px;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        background-color: rgba(255, 255, 255, 0.6);
-        cursor: pointer;
-    }
-
-    .imgAdd {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: #4bd7ef;
-        color: #fff;
-        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        line-height: 30px;
-        margin-top: 0px;
-        cursor: pointer;
-        font-size: 15px;
-    }
-</style>
