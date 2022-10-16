@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('teamtwoimg'); 
             $table->string('date');
             $table->string('time');
-            $table->string('vanue');
+            $table->string('venue');
             $table->longText('api');
             $table->boolean('status');
             $table->timestamps();

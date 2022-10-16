@@ -17,23 +17,11 @@ class MatchesController extends Controller
         return view('matches.index', ['data' => $data, 'page' => $this->page_name]);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $id =   Matches::insertGetId($request->except('_token'));
@@ -45,14 +33,7 @@ class MatchesController extends Controller
         }
         return redirect()->back()->with(['store' => 'Data successfully Saved ']);
     }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function status($id)
     {
         $status = Matches::find($id);
@@ -86,8 +67,13 @@ class MatchesController extends Controller
      */
     public function update(Request $request)
     {
+
+        $request->validate([
+            $request->all() => 'required',
+        ]);
+
         $id = $request->id;
-        Matches::where('id', $id)->update($request->except("_token", 'teamoneimg','teamtwoimg'));
+        Matches::where('id', $id)->update($request->except("_token", 'teamoneimg', 'teamtwoimg'));
         if ($request->file('teamoneimg')) {
             $this->update_images('matches', $id, $request->file('teamoneimg'), 'matches', 'teamoneimg');
         }

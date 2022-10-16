@@ -19,8 +19,9 @@ class Controller extends BaseController
 
     function insert_image($image, $folder)
     {
+        dd($image);
         $destinationPath = 'upload/' . $folder . '/';
-        $image_name = date('YmdHis') . $image->getClientOriginalName();
+        $image_name = time() ."_" .$image->getClientOriginalName();
         $image->move($destinationPath, $image_name);
         return $image_name;
     }
@@ -29,7 +30,7 @@ class Controller extends BaseController
         $destinationPath = 'upload/' . $folder . '/';
         $image_name = DB::table($table_name)->find($id);
         if ($image_name->$column_name == '') {
-            $image_name = date('YmdHis')  . $image->getClientOriginalName();
+            $image_name = time() ."_". $image->getClientOriginalName();
         }else{
             $image_name = $image_name->$column_name;
         }

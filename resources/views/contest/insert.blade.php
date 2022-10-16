@@ -86,14 +86,14 @@
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b> 
                                         percentage_of_winners </b> </label>
-                                <input name="percentage_of_winners" type="text" class="form-control"
+                                <input required name="percentage_of_winners" type="text" class="form-control"
                                     placeholder=" percentage_of_winners ">
                             </div>
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b> 
                                         no_scratch_card_in_one </b> </label>
-                                <input name="no_scratch_card_in_one" type="number" class="form-control"
+                                <input required name="no_scratch_card_in_one" type="number" class="form-control"
                                     placeholder=" no_scratch_card_in_one ">
                             </div>
 
@@ -126,12 +126,12 @@
                                                 size="7" name="from[]" id="from[]" />
                                         </td>
                                         <td>
-                                            <input class="form-control form-control-sm to" id="to" type='number'
+                                            <input required class="form-control form-control-sm to" id="to" type='number'
                                                 name="to[]">
 
                                         </td>
                                         <td>
-                                            <input class="form-control form-control-sm to" id="prize_amount"
+                                            <input required class="form-control form-control-sm to" id="prize_amount"
                                                 type='number' name="prize_amount[]">
 
                                         </td>

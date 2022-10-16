@@ -31,23 +31,23 @@
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>url</b> </label>
-                                    <input value="{{ $data->url }}" required onchange="fetchApi(this.value)"
+                                    <input required value="{{ $data->url }}" required onchange="fetchApi(this.value)"
                                         onclick="fetchApi(this.value)" name="url" type="text" class="form-control"
                                         placeholder="url">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>name</b> </label>
-                                    <input value="{{ $data->name }}" required name="name" type="text"
+                                    <input required value="{{ $data->name }}" required name="name" type="text"
                                         class="form-control" placeholder="name">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>team one</b> </label>
-                                    <input value="{{ $data->teamone }}" required name="teamone" type="text"
+                                    <input required value="{{ $data->teamone }}" required name="teamone" type="text"
                                         value="" class="form-control" placeholder="teamone">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>team two</b> </label>
-                                    <input value="{{ $data->teamtwo }}" required name="teamtwo" type="text"
+                                    <input required value="{{ $data->teamtwo }}" required name="teamtwo" type="text"
                                         value="" class="form-control" placeholder="teamtwo">
                                 </div>
 
@@ -55,7 +55,7 @@
                                     <label for="" class="text-dark"> <b>team one image </b> </label>
                                     <div class="row">
                                         <div class="col-6">
-                                            <input value="{{ $data->url }}" accept="image/*"  name="teamoneimg"
+                                            <input required value="{{ $data->url }}" accept="image/*"  name="teamoneimg"
                                                 type="file" class="form-control" placeholder="teamoneimg	">
                                         </div>
                                         <div class="col-6">
@@ -68,7 +68,7 @@
                                     <label for="" class="text-dark"> <b>team two image </b> </label>
                                     <div class="row">
                                         <div class="col-6">
-                                            <input value="{{ $data->url }}" accept="image/*"  name="teamtwoimg"
+                                            <input required value="{{ $data->url }}" accept="image/*"  name="teamtwoimg"
                                                 type="file" class="form-control" placeholder="teamtwoimg	">
                                         </div>
                                         <div class="col-6">
@@ -79,19 +79,19 @@
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>date</b> </label>
-                                    <input value="{{ $data->date }}" required name="date" type="text"
+                                    <input required value="{{ $data->date }}" required name="date" type="text"
                                         value="" class="form-control" placeholder="date">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>time</b> </label>
-                                    <input value="{{ $data->time }}" required name="time" type="text"
+                                    <input required value="{{ $data->time }}" required name="time" type="text"
                                         value="" class="form-control" placeholder="time">
                                 </div>
 
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b>vanue</b> </label>
-                                    <input value="{{ $data->vanue }}" required name="vanue" type="text"
-                                        value="" class="form-control" placeholder="vanue">
+                                    <label for="" class="text-dark"> <b>venue</b> </label>
+                                    <input required value="{{ $data->venue }}" required name="venue" type="text"
+                                        value="" class="form-control" placeholder="venue">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>status</b> </label>
@@ -100,7 +100,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Deactive</option>
                                     </select>
-                                </div>
+                                </div>required
                                 <div class="form-group col-sm-12">
                                     <textarea hidden required name="api" type="text" class="form-control" placeholder="api Details">none</textarea>
                                 </div>
@@ -127,7 +127,7 @@
                     document.getElementsByName('teamtwo')[0].value = obj.teams.teamtwo
                     document.getElementsByName('date')[0].value = obj.info.date
                     document.getElementsByName('time')[0].value = obj.info.time
-                    document.getElementsByName('vanue')[0].value = obj.info.venue
+                    document.getElementsByName('venue')[0].value = obj.info.venue
 
                 }
                 var data = {

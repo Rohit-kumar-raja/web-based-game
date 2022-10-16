@@ -1,13 +1,13 @@
  <x-layout>
      @slot('body')
          <div class="py-4">
-             <div class="row justify-content-lg-center">
+             {{-- <div class="row justify-content-lg-center">
                  <div class="col-12 mb-4">
                      <div class="card border-0 bg-yellow-100 shadow">
                          <div class="card-header d-sm-flex flex-row align-items-center border-yellow-200 flex-0">
                              <div class="d-block mb-3 mb-sm-0">
                                  <div class="fs-5 fw-normal mb-2"> <i class="fas fa-comment-alt-exclamation    "></i> Total
-                                     Messages</div>
+                                     Messages</div> --}}
                                  {{-- <h2 class="fs-3 fw-extrabold">{{ $total_message }}</h2>  --}}
                                  {{-- <div class="small mt-2"><span class="fw-normal me-2">Yesterday</span> <span
                                          class="fas fa-angle-up text-success"></span>
@@ -18,9 +18,9 @@
                          <div class="card-body p-2">
                              {{-- <div id="chart"></div> --}}
                          </div>
-                     </div>
+                     {{-- </div>
                  </div>
-             </div>
+             </div> --}}
 
              {{-- norification section --}}
              {{-- <div class="row">

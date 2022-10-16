@@ -89,41 +89,41 @@
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b> no_of_participate </b> </label>
-                                    <input value="{{ $data->no_of_participate }}" name="no_of_participate" type="number" class="form-control"
+                                    <input required value="{{ $data->no_of_participate }}" name="no_of_participate" type="number" class="form-control"
                                         placeholder="No Of Participate">
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>
                                             participate_amount </b> </label>
-                                    <input value="{{ $data->participate_amount }}" name="participate_amount" type="number" class="form-control"
+                                    <input required value="{{ $data->participate_amount }}" name="participate_amount" type="number" class="form-control"
                                         placeholder="participate_amount">
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b> 
                                             no_of_winnners </b> </label>
-                                    <input value="{{ $data->no_of_winnners }}" name="no_of_winnners" type="number" class="form-control"
+                                    <input required value="{{ $data->no_of_winnners }}" name="no_of_winnners" type="number" class="form-control"
                                         placeholder=" no_of_winnners ">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b> 
                                             percentage_of_winners </b> </label>
-                                    <input value="{{ $data->percentage_of_winners }}" name="percentage_of_winners" type="text" class="form-control"
+                                    <input required value="{{ $data->percentage_of_winners }}" name="percentage_of_winners" type="text" class="form-control"
                                         placeholder=" percentage_of_winners ">
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b> 
                                             no_scratch_card_in_one </b> </label>
-                                    <input value="{{ $data->no_scratch_card_in_one }}" name="no_scratch_card_in_one" type="number" class="form-control"
+                                    <input required value="{{ $data->no_scratch_card_in_one }}" name="no_scratch_card_in_one" type="number" class="form-control"
                                         placeholder=" no_scratch_card_in_one ">
                                 </div>
 
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>status</b> </label>
-                                    <select required name="status" type="text" class="form-control"
+                                    <select  required name="status" type="text" class="form-control"
                                         placeholder="Title">
                                         <option value="1">Active</option>
                                         <option value="0">Deactive</option>
@@ -150,18 +150,18 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control form-control-sm from" type='number'
-                                                        value="{{ $wrank->from }}" size="7" name="from[]"
+                                                      value="{{ $wrank->from }}" size="7" name="from[]"
                                                         id="from" />
                                                 </td>
                                                 <td>
                                                     <input class="form-control form-control-sm to" id="to"
-                                                        value="{{ $wrank->to }}" type='number' name="to[]">
+                                                    required  value="{{ $wrank->to }}" type='number' name="to[]">
 
                                                 </td>
                                                 <td>
                                                     <input class="form-control form-control-sm to" id="prize_amount"
                                                         value="{{ $wrank->prize_amount }}" type='number'
-                                                        name="prize_amount[]">
+                                                        required  name="prize_amount[]">
 
                                                 </td>
                                                 <td>

@@ -57,9 +57,9 @@
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b>vanue</b> </label>
-                                <input required name="vanue" type="text" value="" class="form-control"
-                                    placeholder="vanue">
+                                <label for="" class="text-dark"> <b>venue</b> </label>
+                                <input required name="venue" type="text" value="" class="form-control"
+                                    placeholder="venue">
                             </div>
 
 
@@ -100,7 +100,7 @@
             document.getElementsByName('teamtwo')[0].value=obj.teams.teamtwo
             document.getElementsByName('date')[0].value=obj.info.date
             document.getElementsByName('time')[0].value=obj.info.time
-            document.getElementsByName('vanue')[0].value=obj.info.venue
+            document.getElementsByName('venue')[0].value=obj.info.venue
 
         }
         var data = {
