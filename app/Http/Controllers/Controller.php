@@ -19,7 +19,7 @@ class Controller extends BaseController
 
     function insert_image($image, $folder)
     {
-        dd($image);
+        // dd($image);
         $destinationPath = 'upload/' . $folder . '/';
         $image_name = time() ."_" .$image->getClientOriginalName();
         $image->move($destinationPath, $image_name);

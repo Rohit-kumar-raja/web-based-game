@@ -60,7 +60,7 @@
                             <th>name </th>
                             <th>phone</th>
                             <th>email </th>
-                            <th>Debit/Credit</th>
+                            <th title="Red i:e Debit Amount Green i:e creadit Amount">Debit/Credit</th>
                             <th>Delete</th>
                             <th>Status</th>
                         </tr>
