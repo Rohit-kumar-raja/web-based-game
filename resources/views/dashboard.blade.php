@@ -16,7 +16,7 @@
                              </div>
                          </div>
                          <div class="card-body p-2">
-                             <div id="chart"></div>
+                             {{-- <div id="chart"></div> --}}
                          </div>
                      </div>
                  </div>
