@@ -14,14 +14,10 @@
                     <li class="breadcrumb-item active" aria-current="page">Wallet</li>
                 </ol>
             </nav>
-
-
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0 col-10">
                     <h1 class="h4">Wallet</h1>
-
                 </div>
-
             </div>
             @if (session('store'))
                 <div class="alert alert-success">

@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('site_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('address');
+            $table->string('phone');
+            $table->string('phone2');
+            $table->string('email');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('whatsapp');
+            $table->string('youtube');
+            $table->string('twitter');
+            $table->string('status');
             $table->timestamps();
         });
     }
