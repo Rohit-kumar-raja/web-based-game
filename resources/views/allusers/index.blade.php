@@ -81,11 +81,9 @@
                             <th>email </th>
                             <th>images</th>
                             <th>phone</th>
-
                             <th>Verified</th>
                             <th>Details</th>
                             <th>Delete</th>
-
                             <th>Status</th>
                         </tr>
                     </tfoot>
@@ -100,13 +98,18 @@
                                 <td><img width="100" src="{{ $url . '/upload/allusers/' . $allusers->images }}">
                                 </td>
                                 <td>
-                                    @if ($allusers->document_verified)
-                                        <span class="btn btn-outline-success btn-sm"> <i
-                                                class="fas fa-check-circle "></i>Yes</span>
-                                    @else
-                                        <span class="btn btn-outline-danger btn-sm"> <i
-                                                class="fas fa-check-circle "></i>No</span>
-                                    @endif
+
+                                    <a href="{{ route('allusers.document.status', $allusers->id) }}"
+                                        class="btn @if ($allusers->document_verified == 1) btn-outline-success @else btn-outline-danger  @endif  btn-sm">
+                                        @if ($allusers->document_verified == 1)
+                                        <i class="fas fa-check-circle"></i>  Yes
+                                        @else
+                                        <i class="fas fa-times-circle"></i> No
+                                        @endif
+                                    </a>
+
+
+                                 
                                 </td>
 
                                 @include('allusers.maasage')

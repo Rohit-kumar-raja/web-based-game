@@ -22,10 +22,10 @@
                         <hr>
                         Document : {{ $allusers->document }}
                         <hr>
-                        Email Verified : @if ($allusers->email_verified_at)
-                            <span class="btn btn-outline-success btn-sm"> <i class="fas fa-check-circle "></i>Yes {{$allusers->email_verified_at}}</span>
+                        Email Verified : @if ($allusers->document_verified)
+                            <span class="btn btn-outline-success btn-sm"> <i class="fas fa-check-circle "></i> Yes {{$allusers->email_verified_at}}</span>
                         @else
-                            <span class="btn btn-outline-danger btn-sm"> <i class="fas fa-check-circle "></i>No</span>
+                            <span class="btn btn-outline-danger btn-sm"> <i class="fas fa-times-circle"></i> No</span>
                         @endif
                         <hr>
                     </div>

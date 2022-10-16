@@ -8,11 +8,7 @@ use Illuminate\Http\Request;
 
 class AllUsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ public $page_name='Users';
     public function index()
     {
         $allusers = AllUsers::all();
@@ -37,7 +33,17 @@ class AllUsersController extends Controller
         }
     }
 
-
+    public function document_status($id)
+    {
+        $document_verified = AllUsers::find($id);
+        if ($document_verified->document_verified == 1) {
+            AllUsers::where('id', $id)->update(['document_verified' => '0']);
+            return redirect()->back()->with('status', $this->page_name.' Document UnVerified');
+        } else {
+            AllUsers::where('id', $id)->update(['document_verified' => '1']);
+            return redirect()->back()->with('status1', $this->page_name.' Document Verified Successfully ');
+        }
+    }
 
 
 

@@ -32,22 +32,18 @@ Route::post('/siteinfo/update', [SiteInfoController::class, 'update'])->middlewa
 // allusers start
 Route::get('/allusers/', [AllUsersController::class, 'index'])->middleware('auth')->name('allusers');
 Route::get('/oneuser/{id}', [AllUsersController::class, 'oneuser'])->middleware('auth')->name('one.user');
-Route::post('/allusers', [AllUsersController::class, 'store'])->middleware('auth')->name('allusers.insert');
 Route::get('/allusers/delete/{id}', [AllUsersController::class, 'destroy'])->middleware('auth')->name('allusers.delete');
 Route::get('/allusers/status/{id}', [AllUsersController::class, 'status'])->middleware('auth')->name('allusers.status');
-Route::get('/allusers/update/{id}', [AllUsersController::class, 'edit'])->middleware('auth')->name('allusers.edit');
-Route::post('/allusers/update', [AllUsersController::class, 'update'])->middleware('auth')->name('allusers.update');
+Route::get('/allusers/document/status/{id}', [AllUsersController::class, 'document_status'])->middleware('auth')->name('allusers.document.status');
+
 // allusers end
 
 
 
 // contactus start
 Route::get('/contactus', [ContactusController::class, 'index'])->middleware('auth')->name('contactus');
-Route::post('/contactus', [ContactusController::class, 'store'])->middleware('auth')->name('contactus.insert');
 Route::get('/contactus/delete/{id}', [ContactusController::class, 'destroy'])->middleware('auth')->name('contactus.delete');
 Route::get('/contactus/status/{id}', [ContactusController::class, 'status'])->middleware('auth')->name('contactus.status');
-Route::get('/contactus/update/{id}', [ContactusController::class, 'edit'])->middleware('auth')->name('contactus.edit');
-Route::post('/contactus/update', [ContactusController::class, 'update'])->middleware('auth')->name('contactus.update');
 // contactus end
 
 
