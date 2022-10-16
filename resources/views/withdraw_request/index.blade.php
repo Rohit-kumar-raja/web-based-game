@@ -86,12 +86,25 @@
 
 
                                 <td>{{ $withdraw_request->amount }}</td>
-                                <td>{{ $withdraw_request->payment_status }}</td>
                                 <td>{{ $withdraw_request->approved_by }}</td>
+                                <td>
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        @if ($withdraw_request->payment_status != '')
+                                            <option selected disabled> {{ $withdraw_request->payment_status }} </option>
+                                        @else
+                                            <option selected disabled>Status</option>
+                                        @endif
+                                        <option value="success">Success</option>
+                                        <option value="padding">pandding</option>
+                                        <option value="reject">reject</option>
 
+                                    </select>
+                                </td>
                                 <td><a href="{{ route('withdraw_request.delete', $withdraw_request->id) }}"
                                         class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                 </td>
+
+
                                 <td><a href="{{ route('withdraw_request.status', $withdraw_request->id) }}"
                                         class="btn @if ($withdraw_request->status == 1) btn-success @endif btn-secondary  btn-sm">
                                         @if ($withdraw_request->status == 1)

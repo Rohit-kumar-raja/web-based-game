@@ -96,7 +96,7 @@
                                         href="{{ route('one.match', $participated_user->matche->id) }}">{{ $participated_user->matche->name }}</a>
                                 </td>
                                 <td class="text-info"> <a target="_blank"
-                                        href="{{ route('one.wallet', $participated_user->wallet_id) }}">{{ $participated_user->wallet->debit>0?$participated_user->wallet->debit:$participated_user->wallet->credit }}</a>
+                                        href="{{ route('one.wallet', $participated_user->wallet_id) }}">{{ $participated_user->wallet->balance}}</a>
                                 </td>
 
 

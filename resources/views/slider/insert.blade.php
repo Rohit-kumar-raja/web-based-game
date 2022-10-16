@@ -39,10 +39,10 @@
                                     <option value="0">Deactive</option>
                                 </select>
                             </div>
-                            <div class="form-group col-sm-12">
-                                <label for="" class="text-dark"> <b>Description</b> </label>
-                                <textarea required name="description" type="text" class="form-control" placeholder="description"></textarea>
-                            </div>
+                            {{-- <div class="form-group col-sm-12">
+                                <label for="" class="text-dark"> <b>Description</b> </label> --}}
+                                <textarea required name="description" hidden type="text" class="form-control" placeholder="description">none</textarea>
+                            {{-- </div> --}}
                         </div>
                     </div>
                     <hr>

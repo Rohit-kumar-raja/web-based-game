@@ -63,7 +63,7 @@
                         <tr>
                             <th>S.NO</th>
                             <th>title </th>
-                            <th>sub_title </th>
+                            <th>sub title </th>
                             <th>Image</th>
                             <th>Image Link </th>
                             <th>Action 1</th>
@@ -75,7 +75,7 @@
                         <tr>
                             <th>S.NO</th>
                             <th>title </th>
-                            <th>sub_title </th>
+                            <th>sub title </th>
                             <th>Image</th>
                             <th>Image Link </th>
                             <th>Action 1</th>
