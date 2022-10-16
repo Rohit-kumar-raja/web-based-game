@@ -39,7 +39,7 @@
                 </div>
             @endif
             <div class="modal-body">
-                <form action="{{ route('matches.insert') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('contest.insert') }}" method="POST" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row">
                             @csrf

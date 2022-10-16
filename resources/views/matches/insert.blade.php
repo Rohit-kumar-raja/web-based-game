@@ -107,7 +107,7 @@
             url: url,
             _token: '7dWGsJjuB7dUGW3K8Es4vm8SFj1Gxq77Ilp9ckWH'
         };
-        xhttp.open("POST", "{{ route('matches') }}/api", true);
+        xhttp.open("POST", "{{ route('matches.fatch.api') }}", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.send(JSON.stringify(data));
     }
