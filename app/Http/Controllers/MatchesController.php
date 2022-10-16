@@ -24,6 +24,11 @@ class MatchesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'teamoneimg' => 'max:2048',
+            'teamtwoimg' => 'max:2048',
+        ]);
+
         $id =   Matches::insertGetId($request->except('_token'));
         if ($request->file('teamoneimg') && $request->file('teamtwoimg')) {
             Matches::where('id', $id)->update([
@@ -33,7 +38,7 @@ class MatchesController extends Controller
         }
         return redirect()->back()->with(['store' => 'Data successfully Saved ']);
     }
-    
+
     public function status($id)
     {
         $status = Matches::find($id);
@@ -69,8 +74,10 @@ class MatchesController extends Controller
     {
 
         $request->validate([
-            $request->all() => 'required',
+            'teamoneimg' => 'max:2048',
+            'teamtwoimg' => 'max:2048',
         ]);
+
 
         $id = $request->id;
         Matches::where('id', $id)->update($request->except("_token", 'teamoneimg', 'teamtwoimg'));

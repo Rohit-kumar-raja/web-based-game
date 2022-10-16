@@ -55,26 +55,35 @@
                                     <label for="" class="text-dark"> <b>team one image </b> </label>
                                     <div class="row">
                                         <div class="col-6">
-                                            <input required value="{{ $data->url }}" accept="image/*"  name="teamoneimg"
+                                            <input value="{{ $data->url }}" accept="image/*" name="teamoneimg"
                                                 type="file" class="form-control" placeholder="teamoneimg	">
                                         </div>
                                         <div class="col-6">
                                             <img src="{{ asset('upload/matches/' . $data->teamoneimg) }}" alt="">
                                         </div>
                                     </div>
+                                    @if ($errors->has('teamoneimg'))
+                                    <span class="text-danger">{{ 'Image must be 2MB or less' }}</span>
+                                @endif
+
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>team two image </b> </label>
                                     <div class="row">
                                         <div class="col-6">
-                                            <input required value="{{ $data->url }}" accept="image/*"  name="teamtwoimg"
+                                            <input value="{{ $data->url }}" accept="image/*" name="teamtwoimg"
                                                 type="file" class="form-control" placeholder="teamtwoimg	">
                                         </div>
                                         <div class="col-6">
                                             <img src="{{ asset('upload/matches/' . $data->teamtwoimg) }}" alt="">
                                         </div>
                                     </div>
+
+                                    @if ($errors->has('teamtwoimg'))
+                                    <span class="text-danger">{{ 'Image must be 2MB or less' }}</span>
+                                        @endif
+
                                 </div>
 
                                 <div class="form-group col-sm-4">
