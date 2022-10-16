@@ -45,58 +45,64 @@
                             @csrf
                             <input type="hidden" name="created_at" value={{ date('Y-m-d') }}>
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b>type</b> </label>
-                                <select required name="matches_id" class="form-control">
-                                    <option selected disabled> - Select - </option>
+                                <label for="" class="text-dark"> <b>Matches</b> </label>
+                                <select id="matches" required onchange="setName(this)" name="matches_id"
+                                    class="form-control">
+                                    <option selected disabled> -Select- </option>
+
                                     @foreach ($matches as $data)
                                         <option value="{{ $data->id }}">{{ $data->name }}</option>
                                     @endforeach
+
                                 </select>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>name</b> </label>
-                                <input required onkeyup="url_data(this.value)" name="name" type="text"
+                                <input id="name" required onkeyup="url_data(this.value)" name="name" type="text"
                                     class="form-control" placeholder="name">
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> total_price </b> </label>
-                                <input required id="url" name="total_price" type="number" class="form-control"
-                                    placeholder="total_price">
+                                <label for="" class="text-dark"> <b><i class="fas fa-rupee-sign"></i> total price
+                                    </b> </label>
+                                <input id="total_price" required id="url" name="total_price" type="number"
+                                    class="form-control" placeholder="total price">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> no_of_participate </b> </label>
-                                <input name="no_of_participate" type="number" class="form-control"
-                                    placeholder="No Of Participate">
+                                <label for="" class="text-dark"> <b> <i class="far fa-users"></i> no of participate
+                                    </b> </label>
+                                <input id="no_of_participate" name="no_of_participate" type="number" class="form-control"
+                                    placeholder="no of participate">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>
+                                        <i class="fas fa-users"></i> no of winnners </b> </label>
+                                <input id="no_of_winnners" name="no_of_winnners" type="number" class="form-control"
+                                    placeholder="  no of winnners ">
                             </div>
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>
-                                        participate_amount </b> </label>
+                                        % percentage of winners </b> </label>
+                                <input onkeyup="winnerPercentage()" onclick="winnerPercentage()" id="percentage_of_winners"
+                                    required name="percentage_of_winners" type="text" class="form-control"
+                                    placeholder="  percentage of winners  ">
+                            </div>
+
+
+                            <div class="form-group col-sm-4">
+                                <label for="" class="text-dark"> <b>
+                                        <i class="fad fa-rupee-sign"></i> participate amount </b> </label>
                                 <input name="participate_amount" type="number" class="form-control"
-                                    placeholder="participate_amount">
+                                    placeholder=" participate amount">
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> 
-                                        no_of_winnners </b> </label>
-                                <input name="no_of_winnners" type="number" class="form-control"
-                                    placeholder=" no_of_winnners ">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> 
-                                        percentage_of_winners </b> </label>
-                                <input required name="percentage_of_winners" type="text" class="form-control"
-                                    placeholder=" percentage_of_winners ">
-                            </div>
-
-                            <div class="form-group col-sm-4">
-                                <label for="" class="text-dark"> <b> 
-                                        no_scratch_card_in_one </b> </label>
+                                <label for="" class="text-dark"> <b>
+                                        no scratch card in one </b> </label>
                                 <input required name="no_scratch_card_in_one" type="number" class="form-control"
-                                    placeholder=" no_scratch_card_in_one ">
+                                    placeholder=" no scratch card in one ">
                             </div>
-
 
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>status</b> </label>
@@ -126,12 +132,13 @@
                                                 size="7" name="from[]" id="from[]" />
                                         </td>
                                         <td>
-                                            <input required class="form-control form-control-sm to" id="to" type='number'
-                                                name="to[]">
+                                            <input required class="form-control form-control-sm to" id="to"
+                                                type='number' name="to[]">
 
                                         </td>
                                         <td>
-                                            <input required class="form-control form-control-sm to" id="prize_amount"
+                                            <input required onkeyup="totalPrice()"
+                                                class="form-control form-control-sm prize" id="prize_amount"
                                                 type='number' name="prize_amount[]">
 
                                         </td>
@@ -174,7 +181,7 @@
             i++;
             $('#dynamic_field').append('<tr id="row' + i +
                 '" class="dynamic-added  " ><td><input type="text" id="slno' + i + '" value="' + i +
-                '" readonly class="form-control form-control-sm" style="border:none;" /></td> <td> <input class="form-control form-control-sm from" type="number" size="7" name="from[]"  /> </td><td>   <input class="form-control form-control-sm to" type="number"  name="to[]" /> </td>    <td> <input class="form-control form-control-sm to" type="number"  id="prize_amount"  name="prize_amount[]"> </td> <td><button type="button" name="remove" id="' +
+                '" readonly class="form-control form-control-sm" style="border:none;" /></td> <td> <input class="form-control form-control-sm from" type="number" size="7" name="from[]"  /> </td><td>   <input class="form-control form-control-sm to" type="number"  name="to[]" /> </td>    <td> <input class="form-control form-control-sm prize" type="number"  id="prize_amount"   onkeyup="totalPrice()" name="prize_amount[]"> </td> <td><button type="button" name="remove" id="' +
                 i + '" class="btn btn-danger btn_remove btn-sm">X</button></td></tr>');
         });
         $(document).on('click', '.btn_remove', function() {
@@ -185,4 +192,34 @@
         });
 
     });
+
+    function setName(name) {
+        var Index = document.getElementById('matches').selectedIndex;
+        document.getElementById('name').value = name[Index].innerText;
+    }
+
+    function winnerPercentage() {
+        var no_of_participate = document.getElementById('no_of_participate').value
+        var no_of_winnners = document.getElementById('no_of_winnners').value
+        var percentage = (Number(no_of_winnners) / Number(no_of_participate)) * 100
+        document.getElementById('percentage_of_winners').value = percentage;
+    }
+
+    function totalPrice() {
+        total_prize_rank_amount = 0;
+
+        var prize_rank_amount = document.getElementsByClassName('prize');
+        var total_price = document.getElementById('total_price').value;
+        for (i = 0; i < prize_rank_amount.length; i++) {
+        
+            total_prize_rank_amount = total_prize_rank_amount + Number(prize_rank_amount[i].value)
+        }
+        console.log(total_price);
+        console.log(total_prize_rank_amount);
+
+        if (total_prize_rank_amount > total_price) {
+            alert('Please Enter Amount less than or equal to ' + total_price)
+            prize_rank_amount[prize_rank_amount.length-1].value = '';
+        }
+    }
 </script>

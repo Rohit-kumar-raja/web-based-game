@@ -62,13 +62,13 @@
                         <tr>
                             <th>S.NO</th>
                             <th>Name</th>
-                            <th>matche_name </th>
-                            <th>total_price </th>
-                            <th>no_of_participate</th>
-                            <th>no_of_winnners</th>
-                            <th>percentage_of_winners</th>
-                            <th>participate_amount</th>
-                            <th>no_scratch_card_in_one</th>
+                            <th>matche name </th>
+                            <th>total price </th>
+                            <th>no of participate</th>
+                            <th>no of winnners</th>
+                            <th>percentage of winners</th>
+                            <th>participate amount</th>
+                            <th>no scratch card in one</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
                             <th>Status</th>
@@ -78,13 +78,13 @@
                         <tr>
                             <th>S.NO</th>
                             <th>Name</th>
-                            <th>matche_name </th>
-                            <th>total_price </th>
-                            <th>no_of_participate</th>
-                            <th>no_of_winnners</th>
-                            <th>percentage_of_winners</th>
-                            <th>participate_amount</th>
-                            <th>no_scratch_card_in_one</th>
+                            <th>matche name </th>
+                            <th>total price </th>
+                            <th>no of participate</th>
+                            <th>no of winnners</th>
+                            <th>percentage of winners</th>
+                            <th>participate amount</th>
+                            <th>no scratch card in one</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
                             <th>Status</th>
@@ -97,6 +97,7 @@
 
                                 <td> {{ $contest->name }} </td>
                                 <td> {{ $contest->matches->name }} </td>
+                                <td> {{ $contest->total_price }} </td>
                                 <td> {{ $contest->no_of_participate }} </td>
                                 <td> {{ $contest->no_of_winnners }} </td>
                                 <td> {{ $contest->percentage_of_winners }} </td>
@@ -104,9 +105,7 @@
                                 <td> {{ $contest->no_scratch_card_in_one }} </td>
                               
 
-                                <td><a href="#" data-bs-toggle="modal"
-                                        data-bs-target="#modal-default{{ $contest->id }}" class="btn btn-info btn-sm"><i
-                                            class="far fa-eye"></i></a> </td>
+                             
                                 <td><a href="{{ route('contest.edit', $contest->id) }}" class="btn btn-warning btn-sm"><i
                                             class="far fa-edit"></i></a>
                                 </td>
