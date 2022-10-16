@@ -80,10 +80,10 @@
 
                         <li class="nav-item"><a class="nav-link" href="{{ route('wallet.debit') }}"><span
                                     class="sidebar-text-contracted">C</span> <span class="sidebar-text">
-                                    debit's</span></a></li>
+                                    Debit's</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('wallet.credit') }}"><span
                                     class="sidebar-text-contracted">C</span> <span class="sidebar-text">
-                                    credit's</span></a></li>
+                                    Credit's</span></a></li>
                     </ul>
                 </div>
             </li>
