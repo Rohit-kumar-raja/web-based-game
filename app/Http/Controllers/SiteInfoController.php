@@ -21,7 +21,6 @@ class SiteInfoController extends Controller
     {
         $id = 1;
         DB::table('site_infos')->where('id', $id)->update($request->except("_token", 'images'));
-
         return redirect('siteinfo')->with(['update' => "Data successfully Updated"]);
     }
 }
