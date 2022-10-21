@@ -10,16 +10,15 @@
 
 
     <!-- Styles -->
-    <link type="text/css" href="vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
-    <link type="text/css" href="vendor/notyf/notyf.min.css" rel="stylesheet">
-    <link type="text/css" href="vendor/fullcalendar/main.min.css" rel="stylesheet">
-    <link type="text/css" href="vendor/apexcharts/dist/apexcharts.css" rel="stylesheet">
-    <link type="text/css" href="vendor/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
-    <link type="text/css" href="vendor/choices.js/public/assets/styles/choices.min.css" rel="stylesheet">
-    <link type="text/css" href="vendor/leaflet/dist/leaflet.css" rel="stylesheet">
-    <link type="text/css" href="css/volt.css" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/notyf/notyf.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/fullcalendar/main.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/apexcharts/dist/apexcharts.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/dropzone/dist/min/dropzone.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('vendor/leaflet/dist/leaflet.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('css/volt.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>

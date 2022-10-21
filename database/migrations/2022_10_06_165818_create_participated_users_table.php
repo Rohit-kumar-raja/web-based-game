@@ -23,11 +23,10 @@ return new class extends Migration
             $table->string('scratch');
             $table->integer('participate_amount');
             $table->boolean('status');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('all_users');
             $table->foreign('matche_id')->references('id')->on('matches');
             $table->foreign('contest_id')->references('id')->on('contests');
             $table->foreign('wallet_id')->references('id')->on('wallets');
-
             $table->timestamps();
         });
     }
