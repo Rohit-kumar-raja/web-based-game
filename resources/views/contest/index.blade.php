@@ -98,9 +98,9 @@
                                 <td> {{ $contest->name }} </td>
                                 <td> {{ $contest->matches->name }} </td>
                                 <td> {{ $contest->total_price }} </td>
-                                <td> {{ $contest->no_of_participate }} </td>
+                                <td> {{ $contest->no_of_participate }}</td>
                                 <td> {{ $contest->no_of_winnners }} </td>
-                                <td> {{ $contest->percentage_of_winners }} </td>
+                                <td> {{ $contest->percentage_of_winners }}% </td>
                                 <td> {{ $contest->participate_amount }} </td>
                                 <td> {{ $contest->no_scratch_card_in_one }} </td>
                               

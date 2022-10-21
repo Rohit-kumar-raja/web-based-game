@@ -65,11 +65,11 @@
                                 <input type="hidden" name="created_at" value={{ date('Y-m-d') }}>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>type</b> </label>
-                                    <select required name="matches_id" class="form-control">
+                                    <select required id="matches" name="matches_id" class="form-control">
 
                                         @foreach ($matches as $data1)
                                             @if ($data1->id == $data->matches_id)
-                                            <option value="{{ $data1->id }}">{{ $data1->name }}</option>
+                                                <option value="{{ $data1->id }}">{{ $data1->name }}</option>
                                             @else
                                                 <option value="{{ $data1->id }}">{{ $data1->name }}</option>
                                             @endif
@@ -78,52 +78,53 @@
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>name</b> </label>
-                                    <input value="{{ $data->name }}"  required  onkeyup="url_data(this.value)" name="name" type="text"
-                                        class="form-control" placeholder="name">
+                                    <input id="name" value="{{ $data->name }}" required onkeyup="url_data(this.value)"
+                                        name="name" type="text" class="form-control" placeholder="name">
                                 </div>
 
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b> total_price </b> </label>
-                                    <input value="{{ $data->total_price }}" required id="url" name="total_price" type="number" class="form-control"
-                                        placeholder="total_price">
+                                    <label for="" class="text-dark"> <b> total price </b> </label>
+                                    <input id="total_price" value="{{ $data->total_price }}" required id="url" name="total_price"
+                                        type="number" class="form-control" placeholder="total_price">
                                 </div>
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b> no_of_participate </b> </label>
-                                    <input required value="{{ $data->no_of_participate }}" name="no_of_participate" type="number" class="form-control"
-                                        placeholder="No Of Participate">
+                                    <label for="" class="text-dark"> <b> no of participate </b> </label>
+                                    <input id="no_of_participate" required value="{{ $data->no_of_participate }}" name="no_of_participate"
+                                        type="number" class="form-control" placeholder="No Of Participate">
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>
-                                            participate_amount </b> </label>
-                                    <input required value="{{ $data->participate_amount }}" name="participate_amount" type="number" class="form-control"
-                                        placeholder="participate_amount">
+                                            participate amount </b> </label>
+                                    <input id="participate_amount" required value="{{ $data->participate_amount }}" name="participate_amount"
+                                        type="number" class="form-control" placeholder="participate amount">
                                 </div>
 
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b> 
-                                            no_of_winnners </b> </label>
-                                    <input required value="{{ $data->no_of_winnners }}" name="no_of_winnners" type="number" class="form-control"
-                                        placeholder=" no_of_winnners ">
+                                    <label for="" class="text-dark"> <b>
+                                            no of winnners </b> </label>
+                                    <input id="no_of_winnners" required value="{{ $data->no_of_winnners }}" name="no_of_winnners"
+                                        type="number" class="form-control" placeholder=" no of winnners ">
                                 </div>
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b> 
-                                            percentage_of_winners </b> </label>
-                                    <input required value="{{ $data->percentage_of_winners }}" name="percentage_of_winners" type="text" class="form-control"
-                                        placeholder=" percentage_of_winners ">
+                                    <label for="" class="text-dark"> <b>
+                                            percentage of winners </b> </label>
+                                    <input id="percentage_of_winners" required value="{{ $data->percentage_of_winners }}" name="percentage_of_winners"
+                                        type="text" class="form-control" placeholder=" percentage of winners ">
                                 </div>
 
                                 <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b> 
-                                            no_scratch_card_in_one </b> </label>
-                                    <input required value="{{ $data->no_scratch_card_in_one }}" name="no_scratch_card_in_one" type="number" class="form-control"
-                                        placeholder=" no_scratch_card_in_one ">
+                                    <label for="" class="text-dark"> <b>
+                                            no scratch card in one </b> </label>
+                                    <input required value="{{ $data->no_scratch_card_in_one }}"
+                                        name="no_scratch_card_in_one" type="number" class="form-control"
+                                        placeholder=" no scratch card in one ">
                                 </div>
 
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>status</b> </label>
-                                    <select  required name="status" type="text" class="form-control"
+                                    <select required name="status" type="text" class="form-control"
                                         placeholder="Title">
                                         <option value="1">Active</option>
                                         <option value="0">Deactive</option>
@@ -137,7 +138,7 @@
                                             <th> Item No.</th>
                                             <th> from </th>
                                             <th> to</th>
-                                            <th> prize_amount</th>
+                                            <th> prize amount</th>
                                             <th> Add</th>
                                         </tr>
                                     </thead>
@@ -150,18 +151,18 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control form-control-sm from" type='number'
-                                                      value="{{ $wrank->from }}" size="7" name="from[]"
+                                                        value="{{ $wrank->from }}" size="7" name="from[]"
                                                         id="from" />
                                                 </td>
                                                 <td>
-                                                    <input class="form-control form-control-sm to" id="to"
-                                                    required  value="{{ $wrank->to }}" type='number' name="to[]">
+                                                    <input class="form-control form-control-sm to" id="to" required
+                                                        value="{{ $wrank->to }}" type='number' name="to[]">
 
                                                 </td>
                                                 <td>
                                                     <input class="form-control form-control-sm to" id="prize_amount"
-                                                        value="{{ $wrank->prize_amount }}" type='number'
-                                                        required  name="prize_amount[]">
+                                                        value="{{ $wrank->prize_amount }}" type='number' required
+                                                        name="prize_amount[]">
 
                                                 </td>
                                                 <td>
@@ -224,4 +225,34 @@
         });
 
     });
+
+    function setName(name) {
+        var Index = document.getElementById('matches').selectedIndex;
+        document.getElementById('name').value = name[Index].innerText;
+    }
+
+    function winnerPercentage() {
+        var no_of_participate = document.getElementById('no_of_participate').value
+        var no_of_winnners = document.getElementById('no_of_winnners').value
+        var percentage = (Number(no_of_winnners) / Number(no_of_participate)) * 100
+        document.getElementById('percentage_of_winners').value = percentage;
+    }
+
+    function totalPrice() {
+        total_prize_rank_amount = 0;
+
+        var prize_rank_amount = document.getElementsByClassName('prize');
+        var total_price = document.getElementById('total_price').value;
+        for (i = 0; i < prize_rank_amount.length; i++) {
+
+            total_prize_rank_amount = total_prize_rank_amount + Number(prize_rank_amount[i].value)
+        }
+        console.log(total_price);
+        console.log(total_prize_rank_amount);
+
+        if (total_prize_rank_amount > total_price) {
+            alert('Please Enter Amount less than or equal to ' + total_price)
+            prize_rank_amount[prize_rank_amount.length - 1].value = '';
+        }
+    }
 </script>
