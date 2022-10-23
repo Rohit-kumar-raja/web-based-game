@@ -78,39 +78,45 @@
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>name</b> </label>
-                                    <input id="name" value="{{ $data->name }}" required onkeyup="url_data(this.value)"
-                                        name="name" type="text" class="form-control" placeholder="name">
+                                    <input id="name" value="{{ $data->name }}" required
+                                        onkeyup="url_data(this.value)" name="name" type="text" class="form-control"
+                                        placeholder="name">
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b> total price </b> </label>
-                                    <input id="total_price" value="{{ $data->total_price }}" required id="url" name="total_price"
-                                        type="number" class="form-control" placeholder="total_price">
+                                    <input id="total_price" value="{{ $data->total_price }}" required id="url"
+                                        name="total_price" type="number" class="form-control" placeholder="total_price">
                                 </div>
-                                <div class="form-group col-sm-4">
-                                    <label for="" class="text-dark"> <b> no of participate </b> </label>
-                                    <input id="no_of_participate" required value="{{ $data->no_of_participate }}" name="no_of_participate"
-                                        type="number" class="form-control" placeholder="No Of Participate">
-                                </div>
+                                <select id="no_of_participate" name="no_of_participate" type="number" class="form-control"
+                                    placeholder="no of participate">
+                                    <option value="{{$data->no_of_participate}}">{{$data->no_of_participate}}</option>
+                                    <option value="15">15</option>
+                                    <option value="28">28</option>
+
+                                </select>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>
                                             participate amount </b> </label>
-                                    <input id="participate_amount" required value="{{ $data->participate_amount }}" name="participate_amount"
-                                        type="number" class="form-control" placeholder="participate amount">
+                                    <input id="participate_amount" required value="{{ $data->participate_amount }}"
+                                        name="participate_amount" type="number" class="form-control"
+                                        placeholder="participate amount">
                                 </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>
                                             no of winnners </b> </label>
-                                    <input id="no_of_winnners" required value="{{ $data->no_of_winnners }}" name="no_of_winnners"
-                                        type="number" class="form-control" placeholder=" no of winnners ">
+                                    <input id="no_of_winnners" required value="{{ $data->no_of_winnners }}"
+                                        name="no_of_winnners" type="number" class="form-control"
+                                        placeholder=" no of winnners ">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>
                                             percentage of winners </b> </label>
-                                    <input id="percentage_of_winners" required value="{{ $data->percentage_of_winners }}" name="percentage_of_winners"
-                                        type="text" class="form-control" placeholder=" percentage of winners ">
+                                    <input id="percentage_of_winners" required value="{{ $data->percentage_of_winners }}"
+                                        name="percentage_of_winners" type="text" class="form-control"
+                                        placeholder=" percentage of winners ">
                                 </div>
 
                                 <div class="form-group col-sm-4">

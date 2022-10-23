@@ -71,8 +71,12 @@
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b> <i class="far fa-users"></i> no of participate
                                     </b> </label>
-                                <input id="no_of_participate" name="no_of_participate" type="number" class="form-control"
-                                    placeholder="no of participate">
+                                <select id="no_of_participate" name="no_of_participate" type="number" class="form-control"
+                                    placeholder="no of participate"> 
+                                <option value="15">15</option>
+                                <option value="28">28</option>
+
+                                </select>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="" class="text-dark"> <b>
