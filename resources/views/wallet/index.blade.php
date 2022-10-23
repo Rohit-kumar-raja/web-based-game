@@ -76,14 +76,32 @@
                         @foreach ($data as $wallet)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td class="text-info"> <a target="_blank"
+                                <td class="text-info"> 
+                                    @if(!empty($wallet->user))
+                                    <a target="_blank"
                                         href="{{ route('one.user', $wallet->user->id) }}">{{ $wallet->user->name }}</a>
+                                    @else
+                                    {{"Not Found"}}
+                                    @endif
                                 </td>
-                                <td class="text-info"> <a target="_blank"
+                                <td class="text-info"> 
+                                @if(!empty($wallet->user))
+                                    <a target="_blank"
                                         href="{{ route('one.user', $wallet->user->id) }}">{{ $wallet->user->phone }}</a>
+                                    @else
+                                    {{"Not Found"}}
+                                    @endif    
+                             
                                 </td>
-                                <td class="text-info"> <a target="_blank"
+                                <td class="text-info"> 
+                                    
+                                     @if(!empty($wallet->user))
+                                    <a target="_blank"
                                         href="{{ route('one.user', $wallet->user->id) }}">{{ $wallet->user->email }}</a>
+                                    @else
+                                    {{"Not Found"}}
+                                    @endif
+                                    
                                 </td>
                                 @if ($wallet->debit > 0 && $wallet->debit != '')
                                     <td class="text-danger">{{ $wallet->debit }}</td>
