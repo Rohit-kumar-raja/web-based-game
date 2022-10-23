@@ -13,7 +13,7 @@ use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawRequestController;
 
 // end Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 // slider start
 Route::get('/slider', [SliderController::class, 'index'])->middleware('auth')->name('slider');
