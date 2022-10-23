@@ -44,7 +44,7 @@
 <script src="{{ asset('vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
 <script src="{{ asset('vendor/simple-datatables/dist/umd/simple-datatables.js') }}"></script>
 <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js') }}/2.27.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js'/2.27.0/moment.min.js"></script>
 <script src="{{ asset('vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
 <script src="{{ asset('vendor/fullcalendar/main.min.js') }}"></script>
 <script src="{{ asset('vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
