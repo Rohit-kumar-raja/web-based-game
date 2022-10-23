@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('withdraw_requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('contest_id');
+            $table->unsignedBigInteger('contest_id')->nullable();
             $table->string('amount');
             $table->string('payment_status');
-            $table->string('approved_by');
+            $table->string('approved_by')->nullable();
             $table->boolean('status');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('contest_id')->references('id')->on('contests');
