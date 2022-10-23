@@ -96,7 +96,7 @@
                             class="far fa-users"></i> </span><span class="sidebar-text">Participated Users List</span></a>
             </li>
 
-            <li class="nav-item"><a href="siteinfo" class="nav-link"><span class="sidebar-icon"><i
+            <li class="nav-item"><a href="{{ route('siteinfo') }}" class="nav-link"><span class="sidebar-icon"><i
                             class="fa fa-info-circle"></i></span><span class="sidebar-text">Site Info</span></a>
             </li>
 
