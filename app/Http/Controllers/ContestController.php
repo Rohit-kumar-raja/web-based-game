@@ -103,20 +103,19 @@ class ContestController extends Controller
         $id = $request->id;
         Contest::where('id', $id)->update($request->except('_token', 'from', 'to', 'prize_amount'));
         ContestWinnerRank::where('contest_id', $id)->delete();
-
-        for ($i = 0; $i < count($request->from); $i++) {
-            if ($request->from[$i] != '' && $request->to[$i] != '') {
-                ContestWinnerRank::insert([
-                    'from' => $request->from[$i],
-                    'to' => $request->to[$i],
-                    'prize_amount' => $request->prize_amount[$i],
-                    'contest_id' => $id,
-                    'created_at' => date('Y-m-d h:m:s')
-                ]);
+        if ($request->from) {
+            for ($i = 0; $i < count($request->from); $i++) {
+                if ($request->from[$i] != '' && $request->to[$i] != '') {
+                    ContestWinnerRank::insert([
+                        'from' => $request->from[$i],
+                        'to' => $request->to[$i],
+                        'prize_amount' => $request->prize_amount[$i],
+                        'contest_id' => $id,
+                        'created_at' => date('Y-m-d h:m:s')
+                    ]);
+                }
             }
         }
-
-
         return back()->with(['update' => "Data successfully Updated"]);
     }
 
@@ -138,7 +137,7 @@ class ContestController extends Controller
             Contest::destroy($id);
             return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
         } catch (Exception $e) {
-            return redirect()->back()->with(['delete' => "First you have Delete the participated user related to the this Contest"]);
+            return redirect()->back()->with(['delete' => "First you have Delete the participated user winner Rank related to the this Contest"]);
         }
     }
 }
