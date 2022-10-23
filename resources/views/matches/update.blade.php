@@ -137,7 +137,6 @@
                     document.getElementsByName('date')[0].value = obj.info.date
                     document.getElementsByName('time')[0].value = obj.info.time
                     document.getElementsByName('venue')[0].value = obj.info.venue
-
                 }
                 var data = {
                     url: url,

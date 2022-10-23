@@ -41,14 +41,18 @@ class WalletController extends Controller
 
     public function destroy($id)
     {
-        $image_name = Wallet::find($id);
-        $image_name = $image_name->images;
         try {
-            unlink(public_path('upload/Wallet/' . $image_name));
+            $image_name = Wallet::find($id);
+            $image_name = $image_name->images;
+            try {
+                unlink(public_path('upload/Wallet/' . $image_name));
+            } catch (Exception $e) {
+            }
+            Wallet::destroy($id);
+            return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
         } catch (Exception $e) {
+            return redirect()->back()->with(['delete' => 'First you have to delete the user delete to the wallet ']);
         }
-        Wallet::destroy($id);
-        return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
 
     public function debit()
@@ -61,8 +65,4 @@ class WalletController extends Controller
         $data =  Wallet::where('credit', '!=', '')->get();
         return view('wallet.credit', ['data' => $data]);
     }
-
-    
-
-
 }

@@ -128,13 +128,17 @@ class ContestController extends Controller
      */
     public function destroy($id)
     {
-        $image_name = Contest::find($id);
-        $image_name = $image_name->images;
         try {
-            unlink(public_path('upload/Products/' . $image_name));
+            $image_name = Contest::find($id);
+            $image_name = $image_name->images;
+            try {
+                unlink(public_path('upload/Products/' . $image_name));
+            } catch (Exception $e) {
+            }
+            Contest::destroy($id);
+            return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
         } catch (Exception $e) {
+            return redirect()->back()->with(['delete' => "First you have Delete the participated user related to the this Contest"]);
         }
-        Contest::destroy($id);
-        return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
 }

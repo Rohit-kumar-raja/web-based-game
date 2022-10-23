@@ -109,7 +109,7 @@ class MatchesController extends Controller
             Matches::destroy($id);
             return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
         } catch (Exception $e) {
-            return redirect()->back()->with(['delete' => 'First you have to delete Related parent data']);
+            return redirect()->back()->with(['delete' => 'First you have to delete  Contest Related to the this matches ']);
         }
     }
 
