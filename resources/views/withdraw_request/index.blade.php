@@ -88,9 +88,6 @@
                                 <td class="text-info"> <a target="_blank"
                                         href="{{ route('one.user', $withdraw_request->user->id) }}">{{ $withdraw_request->user->name }}</a>
                                 </td>
-
-
-
                                 <td>{{ $withdraw_request->amount }}</td>
                                 <td>
                                     {{ $withdraw_request->payment_type }}

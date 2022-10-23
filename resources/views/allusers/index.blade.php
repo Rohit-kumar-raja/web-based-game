@@ -95,7 +95,7 @@
                                 <td> {{ $allusers->phone }} </td>
                                 <td> {{ $allusers->email }} </td>
 
-                                <td><img width="100" src="{{ $url . '/upload/allusers/' . $allusers->images }}">
+                                <td><img width="100" src="{{ $url . 'user/' . $allusers->images }}">
                                 </td>
                                 <td>
 

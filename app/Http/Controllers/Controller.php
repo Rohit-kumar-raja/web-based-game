@@ -40,6 +40,6 @@ class Controller extends BaseController
     }
     public function web_url()
     {
-        return "web.url.com";
+        return "https://fan2jodi.com/public/";
     }
 }
