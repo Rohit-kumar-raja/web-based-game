@@ -19,18 +19,18 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('images');
-            $table->string('city');
-            $table->string('district');
-            $table->string('state');
-            $table->string('address');
-            $table->string('document_type');
-            $table->string('document');
-            $table->boolean('document_verified');
+            $table->string('images')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('state')->nullable();
+            $table->string('address')->nullable();
+            $table->string('document_type')->nullable();
+            $table->string('document')->nullable();
+            $table->boolean('document_verified')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

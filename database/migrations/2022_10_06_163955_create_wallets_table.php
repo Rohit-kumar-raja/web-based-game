@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->double('debit');
-            $table->double('credit');
-            $table->double('balance');
-            $table->string('withdraw_status');
-            $table->longText('api_info');
-            $table->boolean('status');
+            $table->double('debit')->nullable();
+            $table->double('credit')->nullable();
+            $table->double('balance')->nullable();
+            $table->string('withdraw_status')->nullable();
+            $table->longText('api_info')->nullable();
+            $table->boolean('status')->nullable();
             $table->foreign('user_id')->references('id')->on('all_users');
             $table->timestamps();
         });
