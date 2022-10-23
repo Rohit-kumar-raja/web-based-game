@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Messages;
 use Illuminate\Http\Request;
-
+use Auth;
 class DashboardController extends Controller
 {
     function index()
