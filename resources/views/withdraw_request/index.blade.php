@@ -59,6 +59,8 @@
                             <th>S.NO</th>
                             <th>user name </th>
                             <th>Amount </th>
+                            <th>Payment type</th>
+                            <th>Payment id</th>
                             <th>payment_status</th>
                             <th>approved_by</th>
                             <th>Delete</th>
@@ -70,8 +72,11 @@
                             <th>S.NO</th>
                             <th>name </th>
                             <th>Amount </th>
+                            <th>Payment type</th>
+                            <th>Payment id</th>
                             <th>payment_status</th>
                             <th>approved_by</th>
+
                             <th>Delete</th>
                             <th>Status</th>
                         </tr>
@@ -85,7 +90,14 @@
                                 </td>
 
 
+
                                 <td>{{ $withdraw_request->amount }}</td>
+                                <td>
+                                    {{ $withdraw_request->payment_type }}
+                                </td>
+                                <td>
+                                    {{ $withdraw_request->payment_id }}
+                                </td>
                                 <td>{{ $withdraw_request->approved_by }}</td>
                                 <td>
                                     <select class="form-control form-control-sm" name="" id="">
