@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('payment_status');
             $table->string('approved_by')->nullable();
             $table->boolean('status');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('all_users');
             $table->foreign('contest_id')->references('id')->on('contests');
             $table->timestamps();
         });
