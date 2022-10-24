@@ -90,7 +90,6 @@ class ContestController extends Controller
         $rank = ContestWinnerRank::where('contest_id', $id)->get();
         return view('contest.update', ["data" => $data, 'matches' => $matches, 'rank' => $rank, 'page' => $this->page_name]);
     }
-
     /**
      * Update the specified resource in storage.
      *
