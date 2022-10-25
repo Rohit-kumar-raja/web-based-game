@@ -21,6 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('wallet_id');
             $table->string('player');
             $table->string('scratch');
+            $table->integer('total_run')->nullable();
+            $table->integer('winnig_amount')->nullable();
             $table->integer('participate_amount');
             $table->boolean('status');
             $table->foreign('user_id')->references('id')->on('all_users');

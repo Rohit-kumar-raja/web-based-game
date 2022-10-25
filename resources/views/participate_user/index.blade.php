@@ -63,7 +63,10 @@
                             <th>Wallet</th>
                             <th>Amount </th>
                             <th>Player</th>
+                            
                             <th>Sctrach</th>
+                            <th>Total Run</th>
+                            <th>Winning Amount</th>
                             {{-- <th>Delete</th> --}}
                             <th>Status</th>
                         </tr>
@@ -77,6 +80,8 @@
                             <th>Wallet</th>
                             <th>Amount </th>
                             <th>Player</th>
+                            <th>Total Run</th>
+                            <th>Winning Amount</th>
                             <th>Sctrach</th>
                             {{-- <th>Delete</th> --}}
                             <th>Status</th>
@@ -103,6 +108,9 @@
                                 <td>{{ $participated_user->participate_amount }}</td>
                                 <td>{{ $participated_user->player }}</td>
                                 <td>{{ $participated_user->scratch }}</td>
+                                <td>{{ $participated_user->total_run }}</td>
+                                <td>{{ $participated_user->winnig_amount }}</td>
+
 
                                 {{-- <td><a href="{{ route('participated_user.delete', $participated_user->id) }}"
                                         class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
