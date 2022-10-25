@@ -9,6 +9,8 @@ class DashboardController extends Controller
 {
     function index()
     {
+
+         dd(date('d-m-Y H:i:s'));
         $from = date('2018-01-01');
         $to = date('2018-05-02');
   
