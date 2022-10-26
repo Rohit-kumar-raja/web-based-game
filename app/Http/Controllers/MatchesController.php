@@ -13,7 +13,6 @@ use PhpParser\Node\Expr\Print_;
 
 class MatchesController extends Controller
 {
-
     // page of the show into the front of the admin panel 
     public  $page_name = 'Matches';
     public function index()
