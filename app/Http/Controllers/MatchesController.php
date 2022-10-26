@@ -184,6 +184,7 @@ class MatchesController extends Controller
                     }
                 }
             }
+            
             Matches::where('id', $matches_id)->update(['winner_status' => '1']);
             return redirect()->back()->with('status1', 'Matches Successfully Completed');
         }
