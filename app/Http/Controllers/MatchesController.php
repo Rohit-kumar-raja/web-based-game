@@ -157,7 +157,7 @@ class MatchesController extends Controller
                             'debit' => 0,
                             'credit' => $participated_user_total_amount * ($total_winner_percentage[$i] / 100),
                             'balance' => ((int)Wallet::where('user_id', $participated_user[$i]->user_id)->first()->balance ?? '0') + ((int)$participated_user_total_amount * ($total_winner_percentage[$i] / 100)),
-                            'withdraw_status' => 1,
+                            'withdraw_status' => 'Contest Winning Amount - Success',
                             'api_info' => "Contest Winning Amount",
                             'status' => 1,
 
@@ -171,7 +171,7 @@ class MatchesController extends Controller
                             'debit' => 0,
                             'credit' => $participated_user_total_amount * ($total_winner_percentage[$i] / 100),
                             'balance' => ((int)Wallet::where('user_id', $participated_user[$i]->user_id)->first()->balance ?? '0') + ((int)$participated_user_total_amount * ($total_winner_percentage[$i] / 100)),
-                            'withdraw_status' => 1,
+                            'withdraw_status' => 'Contest Winning Amount - Success',
                             'api_info' => "Contest Winning Amount",
                             'status' => 1,
 
