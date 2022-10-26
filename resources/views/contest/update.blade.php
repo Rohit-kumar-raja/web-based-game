@@ -153,7 +153,7 @@
                                             <th> Item No.</th>
                                             <th> from </th>
                                             <th> to</th>
-                                            <th> prize amount</th>
+                                            <th> prize percentage amount</th>
                                             <th> Add</th>
                                         </tr>
                                     </thead>
