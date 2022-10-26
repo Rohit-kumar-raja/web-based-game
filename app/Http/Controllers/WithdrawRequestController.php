@@ -10,7 +10,7 @@ class WithdrawRequestController extends Controller
 {
     public function index()
     {
-        $data =  WithdrawRequest::all();
+        $data =  WithdrawRequest::orderByDesc('id')->get();
         return view('withdraw_request.index', ['data' => $data]);
     }
 
@@ -49,5 +49,4 @@ class WithdrawRequestController extends Controller
         WithdrawRequest::destroy($id);
         return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
-
 }

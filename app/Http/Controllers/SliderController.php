@@ -12,7 +12,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slider = DB::table('slider_tbl')->get();
+        $slider = DB::table('slider_tbl')->orderByDesc('id')->get();
         return view('slider.index', ['data' => $slider, 'url' => $this->slider_url()]);
     }
 

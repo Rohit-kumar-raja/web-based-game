@@ -13,7 +13,7 @@ class MatchesController extends Controller
     public  $page_name = 'Matches';
     public function index()
     {
-        $data = Matches::all();
+        $data = Matches::orderByDesc('id')->get();
         return view('matches.index', ['data' => $data, 'page' => $this->page_name]);
     }
 

@@ -13,7 +13,7 @@ class ContestController extends Controller
     public  $page_name = 'Contest';
     public function index()
     {
-        $Products = Contest::all();
+        $Products = Contest::orderByDesc('id')->get();
         return view('contest.index', ['data' => $Products, 'page' => $this->page_name]);
     }
 

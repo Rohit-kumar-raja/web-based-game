@@ -15,7 +15,7 @@ class WalletController extends Controller
      */
     public function index()
     {
-        $wallet = Wallet::all();
+        $wallet = Wallet::orderByDesc('id')->get();
         $all_withdraw = Wallet::where('withdraw_status', 1)->sum('debit');
         $all_added = Wallet::sum('credit');
         return view('wallet.index', ['data' => $wallet, 'all_withdraw' => $all_withdraw, 'all_added' => $all_added]);

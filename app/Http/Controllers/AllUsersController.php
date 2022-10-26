@@ -11,7 +11,7 @@ class AllUsersController extends Controller
  public $page_name='Users';
     public function index()
     {
-        $allusers = AllUsers::all();
+        $allusers = AllUsers::orderByDesc('id')->get();
         return view('allusers.index', ['data' => $allusers, 'url' => $this->web_url()]);
     }
     public function oneuser($id)
