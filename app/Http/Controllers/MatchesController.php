@@ -142,10 +142,6 @@ class MatchesController extends Controller
         if ($status->winner_status == 1) {
             return redirect()->back();
         } else {
-            //  Matches::where('id', $matches_id)->update(['winner_status' => '1']);
-            //            return redirect()->back()->with('status1', 'Matches Successfully Completed');
-
-
             $contest =  Contest::where('matches_id', $matches_id)->get();
             // dd($contest);
             foreach ($contest as $con) {
@@ -188,6 +184,8 @@ class MatchesController extends Controller
                     }
                 }
             }
+            Matches::where('id', $matches_id)->update(['winner_status' => '1']);
+            return redirect()->back()->with('status1', 'Matches Successfully Completed');
         }
     }
 }
