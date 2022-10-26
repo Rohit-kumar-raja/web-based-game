@@ -132,12 +132,8 @@ class MatchesController extends Controller
         return  $total_winner_percentage;
     }
 
-
-
     public function winner_deside($matches_id)
     {
-
-
         $status = Matches::find($matches_id);
         if ($status->winner_status == 1) {
             return redirect()->back();
@@ -184,7 +180,7 @@ class MatchesController extends Controller
                     }
                 }
             }
-            
+
             Matches::where('id', $matches_id)->update(['winner_status' => '1']);
             return redirect()->back()->with('status1', 'Matches Successfully Completed');
         }
