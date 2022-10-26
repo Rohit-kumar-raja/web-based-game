@@ -65,6 +65,7 @@ Route::get('/matches/status/{id}', [MatchesController::class, 'status'])->middle
 Route::get('/matches/update/{id}', [MatchesController::class, 'edit'])->middleware('auth')->name('matches.edit');
 Route::post('/matches/update', [MatchesController::class, 'update'])->middleware('auth')->name('matches.update');
 Route::post('/matches/api/', [MatchesController::class, 'fetch_api'])->middleware('auth')->name('matches.fatch.api');
+Route::get('/matches/winner/deside/{matches_id}', [MatchesController::class, 'winner_deside'])->middleware('auth')->name('matches.winner.deside');
 
 // match end
 

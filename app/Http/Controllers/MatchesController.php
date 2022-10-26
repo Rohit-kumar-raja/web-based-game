@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contest;
+use App\Models\ContestWinnerRank;
 use App\Models\Matches;
+use App\Models\Participated_user;
 use Illuminate\Http\Request;
 use Exception;
+use PhpParser\Node\Expr\Print_;
 
 class MatchesController extends Controller
 {
@@ -91,12 +95,6 @@ class MatchesController extends Controller
         return redirect()->route('matches')->with(['update' => "Data successfully Updated"]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {
@@ -119,5 +117,49 @@ class MatchesController extends Controller
         $string = file_get_contents("https://cric-api.vercel.app/i?url=" . $url);
         $data = json_decode($string);
         return response()->json($data);
+    }
+
+    public function winner_rank($contest_id)
+    {
+        $total_winner_percentage = array();
+        $winner_rank = ContestWinnerRank::where('contest_id', $contest_id)->get();
+        foreach ($winner_rank as $rank) {
+            for ($i = $rank->from; $i <= $rank->to; $i++) {
+                array_push($total_winner_percentage, $rank->prize_amount);
+            }
+        }
+        return  $total_winner_percentage;
+    }
+
+
+
+    public function winner_deside($matches_id)
+    {
+
+
+        $contest =  Contest::where('matches_id', $matches_id)->get();
+        // dd($contest);
+        foreach ($contest as $con) {
+            // gettting the data from participated user of
+            $participated_user = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->get();
+            $participated_user_total_amount = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->sum('participate_amount');
+            $total_no_of_participated_user = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->count();
+
+            $total_winner_percentage = $this->winner_rank($con->id);
+            $total_winner_percentage_count = count($total_winner_percentage);
+
+            echo "<pre>";
+            print_r(json_decode(json_encode($participated_user)));
+
+            if ($total_winner_percentage_count > $total_no_of_participated_user) {
+                for ($i = 0; $i < $total_no_of_participated_user; $i++) {
+                    print_r(json_decode(json_encode($participated_user[$i])));
+                }
+            } else {
+                for ($i = 0; $i < $total_winner_percentage_count; $i++) {
+                    print_r(json_decode(json_encode($participated_user[$i])));
+                }
+            }
+        }
     }
 }

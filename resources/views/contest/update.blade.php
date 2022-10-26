@@ -88,13 +88,22 @@
                                     <input id="total_price" value="{{ $data->total_price }}" required id="url"
                                         name="total_price" type="number" class="form-control" placeholder="total_price">
                                 </div>
-                                <select id="no_of_participate" name="no_of_participate" type="number" class="form-control"
-                                    placeholder="no of participate">
-                                    <option value="{{$data->no_of_participate}}">{{$data->no_of_participate}}</option>
-                                    <option value="15">15</option>
-                                    <option value="28">28</option>
+                      
 
-                                </select>
+                                <div class="form-group col-sm-4">
+                                    <label for="" class="text-dark"> <b> <i class="far fa-users"></i> no of
+                                            participate
+                                        </b> </label>
+                                    <select id="no_of_participate" name="no_of_participate" type="number"
+                                        class="form-control" placeholder="no of participate">
+                                        <option value="{{ $data->no_of_participate }}">{{ $data->no_of_participate }}
+                                        </option>
+
+                                        <option value="15">15</option>
+                                        <option value="28">28</option>
+
+                                    </select>
+                                </div>
 
                                 <div class="form-group col-sm-4">
                                     <label for="" class="text-dark"> <b>

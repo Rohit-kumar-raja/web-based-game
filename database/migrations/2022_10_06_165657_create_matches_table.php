@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('venue');
             $table->longText('api');
             $table->boolean('status');
+            $table->boolean('winner_status');
             $table->timestamps();
         });
     }
