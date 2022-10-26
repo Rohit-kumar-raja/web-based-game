@@ -69,6 +69,7 @@
                             <th>teamtwoimg</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Completed</th>
                             <th>Api Details</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
@@ -85,6 +86,7 @@
                             <th>teamtwoimg</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Completed</th>
                             <th>Api Details</th>
                             <th>Action 1</th>
                             <th>Action 2</th>
@@ -95,7 +97,6 @@
                         @foreach ($data as $matches)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-
                                 <td> {{ $matches->name }} </td>
                                 <td> {{ $matches->teamone }} </td>
                                 <td> {{ $matches->teamtwo }} </td>
@@ -105,6 +106,15 @@
                                 </td>
                                 <td> {{ $matches->date }} </td>
                                 <td> {{ $matches->time }} </td>
+                                <td><a href="{{ route('matches.winner.deside', $matches->id) }}"
+                                        class="btn @if ($matches->winner_status == 1) btn-success @endif btn-secondary  btn-sm">
+                                        @if ($matches->winner_status == 1)
+                                            Yes
+                                        @else
+                                            No
+                                        @endif
+                                    </a>
+                                </td>
                                 @include('matches.maasage')
                                 <td><a href="#" data-bs-toggle="modal"
                                         data-bs-target="#modal-default{{ $matches->id }}" class="btn btn-info btn-sm"><i
@@ -132,4 +142,3 @@
         </div>
     @endslot
 </x-layout>
-

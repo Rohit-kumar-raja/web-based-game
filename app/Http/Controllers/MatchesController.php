@@ -137,27 +137,36 @@ class MatchesController extends Controller
     {
 
 
-        $contest =  Contest::where('matches_id', $matches_id)->get();
-        // dd($contest);
-        foreach ($contest as $con) {
-            // gettting the data from participated user of
-            $participated_user = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->get();
-            $participated_user_total_amount = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->sum('participate_amount');
-            $total_no_of_participated_user = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->count();
+        $status = Matches::find($matches_id);
+        if ($status->winner_status == 1) {
+            return redirect()->back();
+        } else {
+            Matches::where('id', $matches_id)->update(['winner_status' => '1']);
+            return redirect()->back()->with('status1', 'Matches Successfully Completed');
 
-            $total_winner_percentage = $this->winner_rank($con->id);
-            $total_winner_percentage_count = count($total_winner_percentage);
 
-            echo "<pre>";
-            print_r(json_decode(json_encode($participated_user)));
+            $contest =  Contest::where('matches_id', $matches_id)->get();
+            // dd($contest);
+            foreach ($contest as $con) {
+                // gettting the data from participated user of
+                $participated_user = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->get();
+                $participated_user_total_amount = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->sum('participate_amount');
+                $total_no_of_participated_user = Participated_user::where('contest_id', $con->id)->orderByDesc('total_run')->count();
 
-            if ($total_winner_percentage_count > $total_no_of_participated_user) {
-                for ($i = 0; $i < $total_no_of_participated_user; $i++) {
-                    print_r(json_decode(json_encode($participated_user[$i])));
-                }
-            } else {
-                for ($i = 0; $i < $total_winner_percentage_count; $i++) {
-                    print_r(json_decode(json_encode($participated_user[$i])));
+                $total_winner_percentage = $this->winner_rank($con->id);
+                $total_winner_percentage_count = count($total_winner_percentage);
+
+                echo "<pre>";
+                print_r(json_decode(json_encode($participated_user)));
+
+                if ($total_winner_percentage_count > $total_no_of_participated_user) {
+                    for ($i = 0; $i < $total_no_of_participated_user; $i++) {
+                        print_r(json_decode(json_encode($participated_user[$i])));
+                    }
+                } else {
+                    for ($i = 0; $i < $total_winner_percentage_count; $i++) {
+                        print_r(json_decode(json_encode($participated_user[$i])));
+                    }
                 }
             }
         }
