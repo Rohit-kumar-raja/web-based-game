@@ -6,6 +6,7 @@ use App\Models\Contest;
 use App\Models\ContestWinnerRank;
 use App\Models\Matches;
 use App\Models\Participated_user;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Exception;
 use PhpParser\Node\Expr\Print_;
@@ -141,8 +142,8 @@ class MatchesController extends Controller
         if ($status->winner_status == 1) {
             return redirect()->back();
         } else {
-            Matches::where('id', $matches_id)->update(['winner_status' => '1']);
-            return redirect()->back()->with('status1', 'Matches Successfully Completed');
+            //  Matches::where('id', $matches_id)->update(['winner_status' => '1']);
+            //            return redirect()->back()->with('status1', 'Matches Successfully Completed');
 
 
             $contest =  Contest::where('matches_id', $matches_id)->get();
@@ -156,16 +157,34 @@ class MatchesController extends Controller
                 $total_winner_percentage = $this->winner_rank($con->id);
                 $total_winner_percentage_count = count($total_winner_percentage);
 
-                echo "<pre>";
-                print_r(json_decode(json_encode($participated_user)));
 
                 if ($total_winner_percentage_count > $total_no_of_participated_user) {
                     for ($i = 0; $i < $total_no_of_participated_user; $i++) {
                         print_r(json_decode(json_encode($participated_user[$i])));
+                        Wallet::insert([
+                            'user_id' => $participated_user[$i]->user_id,
+                            'debit' => 0,
+                            'credit' => $participated_user_total_amount * ($total_winner_percentage[$i] / 100),
+                            'balance' => ((int)Wallet::where('user_id', $participated_user[$i]->user_id)->first()->balance ?? '0') + ((int)$participated_user_total_amount * ($total_winner_percentage[$i] / 100)),
+                            'withdraw_status' => 1,
+                            'api_info' => "Contest Winning Amount",
+                            'status' => 1,
+
+                        ]);
                     }
                 } else {
                     for ($i = 0; $i < $total_winner_percentage_count; $i++) {
                         print_r(json_decode(json_encode($participated_user[$i])));
+                        Wallet::insert([
+                            'user_id' => $participated_user[$i]->user_id,
+                            'debit' => 0,
+                            'credit' => $participated_user_total_amount * ($total_winner_percentage[$i] / 100),
+                            'balance' => ((int)Wallet::where('user_id', $participated_user[$i]->user_id)->first()->balance ?? '0') + ((int)$participated_user_total_amount * ($total_winner_percentage[$i] / 100)),
+                            'withdraw_status' => 1,
+                            'api_info' => "Contest Winning Amount",
+                            'status' => 1,
+
+                        ]);
                     }
                 }
             }
