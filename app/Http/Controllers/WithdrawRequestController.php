@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Wallet;
 use App\Models\WithdrawRequest;
 use Illuminate\Http\Request;
 use Exception;
@@ -14,15 +15,7 @@ class WithdrawRequestController extends Controller
         return view('withdraw_request.index', ['data' => $data]);
     }
 
-    public function approved()
-    {
-    }
-    public function padding()
-    {
-    }
-    public function reject()
-    {
-    }
+
 
 
 
@@ -48,5 +41,57 @@ class WithdrawRequestController extends Controller
         }
         WithdrawRequest::destroy($id);
         return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
+    }
+
+    public function withdraw_request_status(Request $request)
+    {
+        $id = $request->id;
+        $status = $request->status;
+        $withdraw_request = WithdrawRequest::find($id);
+        $user_id = $withdraw_request->user_id;
+        $request_amount = $withdraw_request->amount;
+        $balance = ((int)Wallet::where('user_id', $user_id)->sum('credit')) - ((int)Wallet::where('user_id', $user_id)->sum('credit'));
+
+        if ($status == 'success') {
+            if ($balance >= $request_amount) {
+                Wallet::insert([
+                    'user_id' => $user_id,
+                    'debit' => $request_amount,
+                    'credit' => 0,
+                    'balance' => ((int)Wallet::where('user_id', $user_id)->first()->balance ?? '0') - (int)$request_amount,
+                    'withdraw_status' => 'Withdraw- Success',
+                    'api_info' => "Contest Withdraw request",
+                    'status' => 1,
+                    'created_at'=>date('Y-m-d h:m:s')
+
+                ]);
+                WithdrawRequest::destroy($id);
+            } else {
+                Wallet::insert([
+                    'user_id' => $user_id,
+                    'debit' => 0,
+                    'credit' => 0,
+                    'balance' => ((int)Wallet::where('user_id', $user_id)->first()->balance ?? '0'),
+                    'withdraw_status' => 'Withdraw- Rejected Due to insufficiant Fund',
+                    'api_info' => "Contest Withdraw request",
+                    'status' => 1,
+                    'created_at'=>date('Y-m-d h:m:s')
+                ]);
+                WithdrawRequest::destroy($id);
+            }
+        } else {
+            Wallet::insert([
+                'user_id' => $user_id,
+                'debit' => 0,
+                'credit' => 0,
+                'balance' => ((int)Wallet::where('user_id', $user_id)->first()->balance ?? '0'),
+                'withdraw_status' => 'Withdraw- Rejected By Admin',
+                'api_info' => "Contest Withdraw request",
+                'status' => 1,
+                'created_at'=>date('Y-m-d h:m:s')
+
+            ]);
+            WithdrawRequest::destroy($id);
+        }
     }
 }

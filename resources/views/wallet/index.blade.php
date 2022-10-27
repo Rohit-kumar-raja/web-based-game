@@ -57,6 +57,7 @@
                             <th>phone</th>
                             <th>email </th>
                             <th title="Red i:e Debit Amount Green i:e creadit Amount">Debit/Credit</th>
+                            <th>Date</th>
                             <th>Delete</th>
                             <th>Status</th>
                         </tr>
@@ -68,6 +69,7 @@
                             <th>email </th>
                             <th>phone</th>
                             <th>Debit/Credit</th>
+                            <th>Date</th>
                             <th>Delete</th>
                             <th>Status</th>
                         </tr>
@@ -108,6 +110,8 @@
                                 @else
                                     <td class="text-success">{{ $wallet->credit }}</td>
                                 @endif
+
+                                <td>{{$wallet->created_at}}</td>
 
                                 <td><a href="{{ route('wallet.delete', $wallet->id) }}" class="btn btn-danger btn-sm"><i
                                             class="fas fa-trash-alt"></i></a>

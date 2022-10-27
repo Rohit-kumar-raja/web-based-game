@@ -62,9 +62,10 @@
                             <th>Payment type</th>
                             <th>Payment id</th>
                             <th>payment_status</th>
+                            <th>Date</th>
                             <th>approved_by</th>
                             <th>Delete</th>
-                            <th>Status</th>
+                            {{-- <th>Status</th> --}}
                         </tr>
                     </thead>
                     <tfoot class="text-dark">
@@ -75,10 +76,10 @@
                             <th>Payment type</th>
                             <th>Payment id</th>
                             <th>payment_status</th>
+                            <th>Date</th>
                             <th>approved_by</th>
-
                             <th>Delete</th>
-                            <th>Status</th>
+                            {{-- <th>Status</th> --}}
                         </tr>
                     </tfoot>
                     <tbody>
@@ -95,16 +96,18 @@
                                 <td>
                                     {{ $withdraw_request->payment_id }}
                                 </td>
+
                                 <td>{{ $withdraw_request->approved_by }}</td>
+                                <td>{{ $withdraw_request->created_at}}</td>
                                 <td>
-                                    <select class="form-control form-control-sm" name="" id="">
+                                    <select onchange="changeStatus(this.value , '{{ $withdraw_request->id }}')"
+                                        class="form-control form-control-sm" name="" id="">
                                         @if ($withdraw_request->payment_status != '')
-                                            <option selected disabled> {{ $withdraw_request->payment_status }} </option>
+                                            <option selected disabled>{{ $withdraw_request->payment_status }} </option>
                                         @else
                                             <option selected disabled>Status</option>
                                         @endif
                                         <option value="success">Success</option>
-                                        <option value="padding">pandding</option>
                                         <option value="reject">reject</option>
 
                                     </select>
@@ -114,7 +117,7 @@
                                 </td>
 
 
-                                <td><a href="{{ route('withdraw_request.status', $withdraw_request->id) }}"
+                                {{-- <td><a href="{{ route('withdraw_request.status', $withdraw_request->id) }}"
                                         class="btn @if ($withdraw_request->status == 1) btn-success @endif btn-secondary  btn-sm">
                                         @if ($withdraw_request->status == 1)
                                             Active
@@ -122,7 +125,7 @@
                                             Deactive
                                         @endif
                                     </a>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>
@@ -131,3 +134,23 @@
         </div>
     @endslot
 </x-layout>
+
+<script>
+    function changeStatus(status, id) {
+        if (confirm('Are you Sure to Confirm This Amount')) {
+
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                // getting the data from api
+
+            }
+            var data = {
+                status: status,
+                id: id
+            };
+            xhttp.open("POST", "{{ route('withdraw.request.status') }}", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(JSON.stringify(data));
+        }
+    }
+</script>

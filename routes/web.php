@@ -84,6 +84,7 @@ Route::get('/contest/insert', [ContestController::class, 'insert'])->middleware(
 Route::get('/withdraw/request', [WithdrawRequestController::class, 'index'])->middleware('auth')->name('withdraw.request');
 Route::get('/withdraw/delete/{id}', [WithdrawRequestController::class, 'destroy'])->middleware('auth')->name('withdraw_request.delete');
 Route::get('/withdraw/status/{id}', [WithdrawRequestController::class, 'status'])->middleware('auth')->name('withdraw_request.status');
+Route::post('/withdraw/requet/status/', [WithdrawRequestController::class, 'withdraw_request_status'])->middleware('auth')->name('withdraw.request.status');
 
 // withdraw request end
 
