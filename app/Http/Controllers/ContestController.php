@@ -51,7 +51,7 @@ class ContestController extends Controller
                 'to' => $request->to[$i],
                 'prize_amount' => $request->prize_amount[$i],
                 'contest_id' => $id,
-                'created_at' => date('Y-m-d h:m:s')
+                'created_at' => date('Y-m-d H:i:s')
             ]);
         }
 
@@ -110,7 +110,7 @@ class ContestController extends Controller
                         'to' => $request->to[$i],
                         'prize_amount' => $request->prize_amount[$i],
                         'contest_id' => $id,
-                        'created_at' => date('Y-m-d h:m:s')
+                        'created_at' => date('Y-m-d H:i:s')
                     ]);
                 }
             }

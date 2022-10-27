@@ -160,7 +160,7 @@ class MatchesController extends Controller
                             'withdraw_status' => 'Contest Winning Amount - Success',
                             'api_info' => "Contest Winning Amount",
                             'status' => 1,
-                            'created_at'=>date('Y-m-d h:m:s')
+                            'created_at'=>date('Y-m-d H:i:s')
 
 
                         ]);
@@ -176,7 +176,7 @@ class MatchesController extends Controller
                             'withdraw_status' => 'Contest Winning Amount - Success',
                             'api_info' => "Contest Winning Amount",
                             'status' => 1,
-                            'created_at'=>date('Y-m-d h:m:s')
+                            'created_at'=>date('Y-m-d H:i:s')
 
 
                         ]);

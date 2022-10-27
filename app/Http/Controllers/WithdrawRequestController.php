@@ -58,7 +58,7 @@ class WithdrawRequestController extends Controller
                     'withdraw_status' => 'Withdraw- Success',
                     'api_info' => "Contest Withdraw request",
                     'status' => 1,
-                    'created_at' => date('Y-m-d h:m:s')
+                    'created_at' => date('Y-m-d H:i:s')
 
                 ]);
                 WithdrawRequest::where('id', $id)->update(['status' => 0]);
@@ -71,7 +71,7 @@ class WithdrawRequestController extends Controller
                     'withdraw_status' => 'Withdraw- Rejected Due to insufficiant Fund',
                     'api_info' => "Contest Withdraw request",
                     'status' => 1,
-                    'created_at' => date('Y-m-d h:m:s')
+                    'created_at' => date('Y-m-d H:i:s')
                 ]);
                 WithdrawRequest::where('id', $id)->update(['status' => 0]);
             }
@@ -84,7 +84,7 @@ class WithdrawRequestController extends Controller
                 'withdraw_status' => 'Withdraw- Rejected By Admin',
                 'api_info' => "Contest Withdraw request",
                 'status' => 1,
-                'created_at' => date('Y-m-d h:m:s')
+                'created_at' => date('Y-m-d H:i:s')
 
             ]);
             WithdrawRequest::where('id', $id)->update(['status' => 0]);
