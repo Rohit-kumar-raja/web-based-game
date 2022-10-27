@@ -46,7 +46,7 @@ class WithdrawRequestController extends Controller
         $withdraw_request = WithdrawRequest::find($id);
         $user_id = $withdraw_request->user_id;
         $request_amount = $withdraw_request->amount;
-        $balance = ((int)Wallet::where('user_id', $user_id)->sum('credit')) - ((int)Wallet::where('user_id', $user_id)->sum('credit'));
+        $balance = ((int)Wallet::where('user_id', $user_id)->sum('credit')) - ((int)Wallet::where('user_id', $user_id)->sum('debit'));
 
         if ($status == 'success') {
             if ($balance >= $request_amount) {
