@@ -210,20 +210,20 @@
     }
 
     function totalPrice() {
-        total_prize_rank_amount = 0;
+        // total_prize_rank_amount = 0;
 
-        var prize_rank_amount = document.getElementsByClassName('prize');
-        var total_price = document.getElementById('total_price').value;
-        for (i = 0; i < prize_rank_amount.length; i++) {
+        // var prize_rank_amount = document.getElementsByClassName('prize');
+        // var total_price = document.getElementById('total_price').value;
+        // for (i = 0; i < prize_rank_amount.length; i++) {
         
-            total_prize_rank_amount = total_prize_rank_amount + Number(prize_rank_amount[i].value)
-        }
-        console.log(total_price);
-        console.log(total_prize_rank_amount);
+        //     total_prize_rank_amount = total_prize_rank_amount + Number(prize_rank_amount[i].value)
+        // }
+        // console.log(total_price);
+        // console.log(total_prize_rank_amount);
 
-        if (total_prize_rank_amount > total_price) {
-            alert('Please Enter Amount less than or equal to ' + total_price)
-            prize_rank_amount[prize_rank_amount.length-1].value = '';
-        }
+        // if (total_prize_rank_amount > total_price) {
+        //     alert('Please Enter Amount less than or equal to ' + total_price)
+        //     prize_rank_amount[prize_rank_amount.length-1].value = '';
+        // }
     }
 </script>
