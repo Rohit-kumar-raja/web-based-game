@@ -11,13 +11,9 @@ class WithdrawRequestController extends Controller
 {
     public function index()
     {
-        $data =  WithdrawRequest::orderByDesc('id')->get();
+        $data =  WithdrawRequest::where('status',1)->orderByDesc('id')->get();
         return view('withdraw_request.index', ['data' => $data]);
     }
-
-
-
-
 
     public function status($id)
     {
@@ -62,10 +58,10 @@ class WithdrawRequestController extends Controller
                     'withdraw_status' => 'Withdraw- Success',
                     'api_info' => "Contest Withdraw request",
                     'status' => 1,
-                    'created_at'=>date('Y-m-d h:m:s')
+                    'created_at' => date('Y-m-d h:m:s')
 
                 ]);
-                WithdrawRequest::destroy($id);
+                WithdrawRequest::where('id', $id)->update(['status' => 0]);
             } else {
                 Wallet::insert([
                     'user_id' => $user_id,
@@ -75,9 +71,9 @@ class WithdrawRequestController extends Controller
                     'withdraw_status' => 'Withdraw- Rejected Due to insufficiant Fund',
                     'api_info' => "Contest Withdraw request",
                     'status' => 1,
-                    'created_at'=>date('Y-m-d h:m:s')
+                    'created_at' => date('Y-m-d h:m:s')
                 ]);
-                WithdrawRequest::destroy($id);
+                WithdrawRequest::where('id', $id)->update(['status' => 0]);
             }
         } else {
             Wallet::insert([
@@ -88,10 +84,10 @@ class WithdrawRequestController extends Controller
                 'withdraw_status' => 'Withdraw- Rejected By Admin',
                 'api_info' => "Contest Withdraw request",
                 'status' => 1,
-                'created_at'=>date('Y-m-d h:m:s')
+                'created_at' => date('Y-m-d h:m:s')
 
             ]);
-            WithdrawRequest::destroy($id);
+            WithdrawRequest::where('id', $id)->update(['status' => 0]);
         }
     }
 }
