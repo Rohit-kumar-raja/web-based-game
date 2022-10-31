@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return voidπ
      */
     public function up()
     {
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('payment_type', 30)->nullable();
             $table->string('payment_date', 30)->nullable();
             $table->string('txn_id', 30)->nullable();
+            $table->string('client_txn_id', 30)->nullable();
             $table->string('status', 30)->nullable();
             $table->string('error', 200)->nullable();
             $table->longText('response')->nullable();
