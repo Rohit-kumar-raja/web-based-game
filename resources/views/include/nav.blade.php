@@ -19,7 +19,7 @@
                 
                 
                     <div id="main1">
-                        <button class="openbtn btn btn-primary" onclick="openNav()">☰ </button>  
+                        <button class="openbtn btn " onclick="openNav()">☰ </button>  
                         
                       </div>
                     </button>
