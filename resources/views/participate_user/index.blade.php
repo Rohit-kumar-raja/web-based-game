@@ -52,7 +52,7 @@
         </div>
         </div>
         <div class="card">
-            <div class="table-responsive py-4">
+            <div class="table-responsive py-4 mb-5">
                 <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
                     <thead class="text-dark">
                         <tr>
@@ -63,11 +63,11 @@
                             <th>Wallet</th>
                             <th>Amount </th>
                             <th>Player</th>
-                            
+
                             <th>Sctrach</th>
                             <th>Total Run</th>
                             <th>Winning Amount</th>
-                            {{-- <th>Delete</th> --}}
+                            <th>Delete</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -83,7 +83,7 @@
                             <th>Total Run</th>
                             <th>Winning Amount</th>
                             <th>Sctrach</th>
-                            {{-- <th>Delete</th> --}}
+                            <th>Delete</th>
                             <th>Status</th>
                         </tr>
                     </tfoot>
@@ -101,7 +101,7 @@
                                         href="{{ route('one.match', $participated_user->matche->id) }}">{{ $participated_user->matche->name }}</a>
                                 </td>
                                 <td class="text-info"> <a target="_blank"
-                                        href="{{ route('one.wallet', $participated_user->wallet_id) }}">{{ $participated_user->wallet->balance ?? '0'}}</a>
+                                        href="{{ route('one.wallet', $participated_user->wallet_id) }}">{{ $participated_user->wallet->balance ?? '0' }}</a>
                                 </td>
 
 
@@ -112,9 +112,12 @@
                                 <td>{{ $participated_user->winnig_amount }}</td>
 
 
-                                {{-- <td><a href="{{ route('participated_user.delete', $participated_user->id) }}"
-                                        class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-                                </td> --}}
+                                <td>
+                                    @if ($participated_user->wallet_id >0)
+                                        <a href="{{ route('participated_user.delete_wallet', $participated_user->wallet_id) }}"
+                                            class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                    @endif
+                                </td>
                                 <td><a href="{{ route('participated_user.status', $participated_user->id) }}"
                                         class="btn @if ($participated_user->status == 1) btn-success @endif btn-secondary  btn-sm">
                                         @if ($participated_user->status == 1)

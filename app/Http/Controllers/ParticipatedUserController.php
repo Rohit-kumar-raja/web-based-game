@@ -44,6 +44,14 @@ class ParticipatedUserController extends Controller
         return redirect()->back()->with(['delete' => 'Data Successfully Deleted']);
     }
 
+    public function delete_wallet($id)
+    {
+        Wallet::destroy($id);
+        Participated_user::where('wallet_id',$id)->update(['wallet_id'=>0]);
+        return redirect()->back()->with(['delete' => 'Wallet Amount Created To The User Successfully ']);
+    }
+
+
     public function onematch($id)
     {
         $data =  Matches::where('id', $id)->get();

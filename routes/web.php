@@ -91,6 +91,7 @@ Route::post('/withdraw/requet/status/', [WithdrawRequestController::class, 'with
 Route::get('/participate/user', [ParticipatedUserController::class, 'index'])->middleware('auth')->name('participate.user');
 Route::get('/participate/user/delete/{id}', [ParticipatedUserController::class, 'destroy'])->middleware('auth')->name('participated_user.delete');
 Route::get('/participate/user/status/{id}', [ParticipatedUserController::class, 'status'])->middleware('auth')->name('participated_user.status');
+Route::get('/participate/wallet/delete/{id}', [ParticipatedUserController::class, 'delete_wallet'])->middleware('auth')->name('participated_user.delete_wallet');
 
 Route::get('/onematch/{id}', [ParticipatedUserController::class, 'onematch'])->middleware('auth')->name('one.match');
 Route::get('/onecontest/{id}', [ParticipatedUserController::class, 'onecontest'])->middleware('auth')->name('one.contest');
